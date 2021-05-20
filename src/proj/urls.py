@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from aeroports import views as airport_names_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('list_of_cities/',airport_names_views.cities_list),
+    path('<airport_code>/', airport_names_views.airport_city),
+    path('', airport_names_views.home_page),
 ]
