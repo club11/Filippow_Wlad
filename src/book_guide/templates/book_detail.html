@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+</head>
+<body>
+    <b>Имя: </b>{{ book }}</br>
+    <b>Автор</b>: {{ book.author }}<br>
+    <b>Серия </b>: {{ book.line }}<br>
+    <b>Жанр</b>: {{ book.genre }}<br>
+    <b>Год издания</b>: {{ book.publication_date }}<br>
+    <b>Количество страниц</b>: {{ book.pages }}<br>
+    <b>Возрастные ограничения</b>: {{ book.restrictions }}<br>
+    <b>Издатель</b>: {{ book.publisher }}<br>
+    <b>Количество книг в наличии</b>: {{ book.quantity_on_hand }}<br>
+    <b>Доступен для заказа</b>: {% if book.active %} 
+    Да
+    {% else %}
+    Нет
+    {% endif %}
+    <br>
+    <b>Рейтинг</b>: {{ book.rating }}<br>
+</body>
+</html>

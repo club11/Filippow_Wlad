@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models.base import Model
 
 # Register your models here.
 from . import models
@@ -44,6 +45,8 @@ class PublisherAdmin(admin.ModelAdmin):
         'pk',
         'name'
     ]
+
+
 
 admin.site.register(models.Genre, GenreAdmin)
 admin.site.register(models.Author, AuthorAdmin)

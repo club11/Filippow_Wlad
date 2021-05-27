@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 from aeroports import views as airport_names_views
+from book_guide import views as books_viesws
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('book/<int:book_id>/', books_viesws.book, name="books"),
+    path('genre/', books_viesws.genre_list, name="genres"),
+    path('author/', books_viesws.author_list, name="authors"),
+    path('line/', books_viesws.lines_list, name="lines"),
+    path('publisher/', books_viesws.publishers_list, name="publishers"),
     path('list_of_cities/',airport_names_views.cities_list),
     path('<airport_code>/', airport_names_views.airport_city),
     path('', airport_names_views.home_page),

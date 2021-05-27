@@ -13,7 +13,7 @@ class Genre(models.Model):
         max_length=40)  
 
     def __str__(self) -> str:
-        return self.name 
+        return self.name
 
     class Meta:
         verbose_name='Жанр'
