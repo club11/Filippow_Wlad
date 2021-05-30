@@ -10,10 +10,8 @@
     <h1>All publishers:</h1>
     <ul>
         {% for publisher in publishers_list %}
-            <li>Издатель {{ publisher.pk }}: <a href='/book/{{ publisher.pk }}'>{{ publisher }}</a></li>
+            <li>Издатель {{ publisher.pk }}: <a href='/publisher_data/{{ publisher.pk }}'>{{ publisher }}</a></li>
         {% endfor %}
     </ul>
 </body>
 </html>
-
-

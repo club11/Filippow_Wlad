@@ -11,7 +11,7 @@
     <h1>All genres:</h1>
     <ul>
         {% for genre in genre_list %}
-        <b><li>Genre {{ genre.pk }}:</b> <a href='/book/{{ genre.pk }}'>{{ genre }}</a> - <b>Description: </b> <a href='/book/{{ genre.pk }}'>{{ genre.description }} </a> </li>
+        <b><li>Genre {{ genre.pk }}:</b> <a href='/genre_data/{{ genre.pk }}'>{{ genre }}</a>
         {% endfor %}
     </ul>
 </body>

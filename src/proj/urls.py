@@ -21,11 +21,16 @@ from book_guide import views as books_viesws
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('list_of_reference_books/', books_viesws.list_of_reference_books, name="list_of_reference_books"),
     path('book/<int:book_id>/', books_viesws.book, name="books"),
     path('genre/', books_viesws.genre_list, name="genres"),
+    path('genre_data/<int:genre_id>/', books_viesws.genre_data, name="genre_data"),
     path('author/', books_viesws.author_list, name="authors"),
+    path('author_data/<int:author_id>/', books_viesws.author_data, name="author_data"),
     path('line/', books_viesws.lines_list, name="lines"),
+    path('lines_data/<int:lines_id>/', books_viesws.lines_list_data, name="lines_data"),
     path('publisher/', books_viesws.publishers_list, name="publishers"),
+    path('publisher_data/<int:publisher_id>/', books_viesws.publisher_data, name="publisher_data"),
     path('list_of_cities/',airport_names_views.cities_list),
     path('<airport_code>/', airport_names_views.airport_city),
     path('', airport_names_views.home_page),
