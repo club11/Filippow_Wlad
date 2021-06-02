@@ -10,10 +10,18 @@
     <h1>All authors:</h1>
     <ul>
         {% for author in author_list %}
-            <li>Автор {{ author.pk}}: <a href='/author_data/{{ author.pk }}'>{{ author }}</a></li>
+            <li>Автор {{ author.pk}}: <a href='{% url "author_data" author.pk %}'>{{ author }}</a>
+                || <a href='{% url "author_update" author.pk %}'>Редактировать</a>
+                || <a href='{% url "author_delete" author.pk %}'>Удалить</a></li>
+            </li>
         {% endfor %}
+        <a href='{% url "list_of_reference_books" %}'>
+            <button>Вернуться назад</button>
+          </a>     
+        <a href='{% url "author_create" %}'>
+            <button>Добавить автора</button>
+          </a>   
     </ul>
 </body>
 </html>
-
 

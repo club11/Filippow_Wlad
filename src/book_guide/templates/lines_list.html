@@ -10,9 +10,19 @@
     <h1>All lines:</h1>
     <ul>
         {% for line in lines_list %}
-            <li>Серия {{ line.pk }}: <a href='/lines_data/{{ line.pk }}'>{{ line }}</a></li>
+            <li>Серия {{ line.pk }}: <a href='{% url "lines_data" line.pk %}'>{{ line }}</a>
+                || <a href='{% url "line_update" line.pk %}'>Редактировать</a>
+                || <a href='{% url "line_delete" line.pk %}'>Удалить</a></li>
         {% endfor %}
+        <a href='{% url "list_of_reference_books" %}'>
+            <button>Вернуться назад</button>
+          </a>     
+        <a href='{% url "line_create" %}'>
+            <button>Добавить издательство</button>
     </ul>
 </body>
 </html>
+
+
+
 

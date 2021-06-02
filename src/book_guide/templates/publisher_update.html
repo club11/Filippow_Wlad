@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publisher update</title>
+    <style>
+        a { 
+         text-decoration: none;
+        } 
+    </style>
+</head>
+<body>
+    <h1>Внести изменения в издательство:</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}<br>
+        <a href ='{% url "publishers" %}'><button>Назад к списку издательств</a></button>
+        <button type="submit">Внести изменения </button>
+    </form>
+</body>
+</html>

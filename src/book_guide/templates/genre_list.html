@@ -11,8 +11,15 @@
     <h1>All genres:</h1>
     <ul>
         {% for genre in genre_list %}
-        <b><li>Genre {{ genre.pk }}:</b> <a href='/genre_data/{{ genre.pk }}'>{{ genre }}</a>
+        <b><li>Genre {{ genre.pk }}:</b> <a href='{% url "genre_data" genre.pk %}'>{{ genre }}</a>
+            || <a href='{% url "genre_update" genre.pk %}'>Редактировать</a>
+            || <a href='{% url "genre_delete" genre.pk %}'>Удалить</a></li>
         {% endfor %}
+        <a href='{% url "list_of_reference_books" %}'>
+            <button>Вернуться назад</button>
+          </a>     
+        <a href='{% url "genre_create" %}'>
+            <button>Добавить жанр</button>
     </ul>
 </body>
 </html>
