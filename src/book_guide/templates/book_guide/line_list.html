@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lines_list</title>
-</head>
+{% extends "base.html" %}
+{% block title %}
+line_list
+{% endblock title %}
+{% block body %}
 <body>
-    <h1>All lines:</h1>
+    <h1>Все серии:</h1>
     <ul>
-        {% for line in lines_list %}
+        {% for line in line_list %}
             <li>Серия {{ line.pk }}: <a href='{% url "lines_data" line.pk %}'>{{ line }}</a>
                 || <a href='{% url "line_update" line.pk %}'>Редактировать</a>
                 || <a href='{% url "line_delete" line.pk %}'>Удалить</a></li>
@@ -18,10 +15,10 @@
             <button>Вернуться назад</button>
           </a>     
         <a href='{% url "line_create" %}'>
-            <button>Добавить издательство</button>
+            <button>Добавить серию</button>
     </ul>
-</body>
-</html>
+{% endblock body %}
+
 
 
 

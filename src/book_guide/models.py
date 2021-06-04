@@ -1,6 +1,7 @@
 from typing import ValuesView
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.urls import reverse, reverse_lazy
 
 # Create your models here.
 
@@ -15,6 +16,9 @@ class Genre(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('genre_data', args=[self.pk])        
+
     class Meta:
         verbose_name='Жанр'
         verbose_name_plural='Жанры'      
@@ -27,6 +31,10 @@ class Author(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('author_detail', args=[self.pk])
+
 
     class Meta:
         verbose_name='Автор'
@@ -42,6 +50,9 @@ class Line(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('lines_data', args=[self.pk])
+
     class Meta:
         verbose_name='Серия'
         verbose_name_plural='Серии'  
@@ -55,6 +66,9 @@ class Publisher(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('publisher_data', args=[self.pk])
 
     class Meta:
         verbose_name='Издатель'

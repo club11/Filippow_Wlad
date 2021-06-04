@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Author_list</title>
-</head>
-<body>
-    <h1>All authors:</h1>
+    {% extends "base.html" %}
+    {% block title %}
+    author_list
+    {% endblock title %}
+    {% block body %}
+    <h1>Все авторы:</h1>
     <ul>
         {% for author in author_list %}
-            <li>Автор {{ author.pk}}: <a href='{% url "author_data" author.pk %}'>{{ author }}</a>
+            <li>Автор {{ author.pk}}: <a href='{% url "author_detail" author.pk %}'>{{ author }}</a>
                 || <a href='{% url "author_update" author.pk %}'>Редактировать</a>
                 || <a href='{% url "author_delete" author.pk %}'>Удалить</a></li>
             </li>
@@ -22,6 +18,5 @@
             <button>Добавить автора</button>
           </a>   
     </ul>
-</body>
-</html>
+    {% endblock body %}
 

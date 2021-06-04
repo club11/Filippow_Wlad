@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+genre_detail
+{% endblock title %}
+{% block body %}
+    <h1>Жанр</h1>
+    <b>ID: </b>{{ object.pk }}</br>
+    <b>Жанр</b>: {{ object }}<br>
+    <b>Описание жанра</b>: {{ object.description }}<br>
+    <a href='{% url "genres" %}'>
+        <button>Вернуться назад</button>
+      </a>  
+{% endblock body %}
+

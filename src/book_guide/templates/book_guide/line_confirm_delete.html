@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}line_confirm_delete
+{% endblock title %}
+{% block body %}
+
+    <h1>Удалить серию?</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+{% endblock body %}
+

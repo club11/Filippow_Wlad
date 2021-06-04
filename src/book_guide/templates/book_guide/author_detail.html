@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+author_detail
+{% endblock title %}
+{% block body %}
+<body>
+    <h1>Автор</h1>
+    <b>ID: </b>{{ object.pk }}</br>
+    <b>Автор</b>: {{ object }}<br>
+    <a href='{% url "authors" %}'>
+        <button>Вернуться назад</button>
+      </a>   
+{% endblock body %}
+
+

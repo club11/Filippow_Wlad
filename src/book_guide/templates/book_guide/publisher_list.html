@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publishers_list</title>
-</head>
-<body>
-    <h1>All publishers:</h1>
+{% extends "base.html" %}
+{% block title %}
+publisher_list
+{% endblock title %}
+{% block body %}
+    <h1>Все издатели:</h1>
     <ul>
-        {% for publisher in publishers_list %}
+        {% for publisher in publisher_list %}
             <li>Издатель {{ publisher.pk }}: <a href='{% url "publisher_data" publisher.pk %}'>{{ publisher }} </a>
                 || <a href='{% url "publisher_update" publisher.pk %}'>Редактировать</a>
                 || <a href='{% url "publisher_delete" publisher.pk %}'>Удалить</a></li>
@@ -21,8 +17,9 @@
             <button>Добавить издательство</button>
           </a>     
     </ul>
-</body>
-</html>
+{% endblock body %}
+
+
 
 
 

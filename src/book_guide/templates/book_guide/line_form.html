@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}
+line_form
+{% endblock title %}
+{% block body %}
+    <h1>Добавить серию:</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}<br>
+        <a href ='{% url "lines" %}'><button>Назад к списку серий</a></button>
+        <button type="submit">Добавить серию</button>
+    </form>
+{% endblock body %}

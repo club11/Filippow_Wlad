@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publisher create</title>
-    <style>
-        a { 
-         text-decoration: none;
-        } 
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}
+publisher_form
+{% endblock title %}
+{% block body %}
     <h1>Добавить издательство:</h1>
     <form action="" method="POST">
         {% csrf_token %}
@@ -19,11 +10,7 @@
         <a href ='{% url "publishers" %}'><button>Назад к списку издательств</a></button>
         <button type="submit">Добавить издательство</button>
     </form>
-</body>
-</html>
-
-
-
+{% endblock body %}
 
 
 

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+publisher_detail
+{% endblock title %}
+{% block body %}
+    <h1>Издательство</h1>
+    <b>ID: </b>{{ object.pk }}</br>
+    <b>Издатель</b>: {{ object }}<br>
+    <a href='{% url "publishers" %}'>
+        <button>Вернуться назад</button>
+      </a>  
+{% endblock body %}

@@ -7,21 +7,29 @@
     <title>Book</title>
 </head>
 <body>
-    <b>Имя: </b>{{ book }}</br>
-    <b>Автор</b>: {{ book.author }}<br>
-    <b>Серия </b>: {{ book.line }}<br>
-    <b>Жанр</b>: {{ book.genre }}<br>
-    <b>Год издания</b>: {{ book.publication_date }}<br>
-    <b>Количество страниц</b>: {{ book.pages }}<br>
-    <b>Возрастные ограничения</b>: {{ book.restrictions }}<br>
-    <b>Издатель</b>: {{ book.publisher }}<br>
-    <b>Количество книг в наличии</b>: {{ book.quantity_on_hand }}<br>
-    <b>Доступен для заказа</b>: {% if book.active %} 
-    Да
-    {% else %}
-    Нет
-    {% endif %}
-    <br>
-    <b>Рейтинг</b>: {{ book.rating }}<br>
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Книга {{ book }}</h5>
+          <p class="card-text">
+            <b>Имя: </b>{{ book }}</br>
+            <b>Автор</b>: {{ book.author }}<br>
+            <b>Серия </b>: {{ book.line }}<br>
+            <b>Жанр</b>: {{ book.genre }}<br>
+            <b>Год издания</b>: {{ book.publication_date }}<br>
+            <b>Количество страниц</b>: {{ book.pages }}<br>
+            <b>Возрастные ограничения</b>: {{ book.restrictions }}<br>
+            <b>Издатель</b>: {{ book.publisher }}<br>
+            <b>Количество книг в наличии</b>: {{ book.quantity_on_hand }}<br>            
+          </p>
+        </div>
+      </div>
+      <b>Доступен для заказа</b>: {% if book.active %} 
+      Да
+      {% else %}
+      Нет
+      {% endif %}
+      <br>
+      <b>Рейтинг</b>: {{ book.rating }}<br>   
 </body>
 </html>

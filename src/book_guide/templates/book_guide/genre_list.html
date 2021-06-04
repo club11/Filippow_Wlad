@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genre</title>
-    </style> 
-</head>
-<body>
-    <h1>All genres:</h1>
+{% extends "base.html" %}
+{% block title %}
+genre_list
+{% endblock title %}
+{% block body %}
+    <h1>Все жанры:</h1>
     <ul>
         {% for genre in genre_list %}
         <b><li>Genre {{ genre.pk }}:</b> <a href='{% url "genre_data" genre.pk %}'>{{ genre }}</a>
@@ -21,7 +16,4 @@
         <a href='{% url "genre_create" %}'>
             <button>Добавить жанр</button>
     </ul>
-</body>
-</html>
-
-
+{% endblock body %}
