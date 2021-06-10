@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from . import local_settings
 
 
 
@@ -22,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-k5es^v4bg0ym&!cji_lo7*ehuy1_q8q1ge4gy9!f+vr=#w#$70'
+SECRET_KEY = local_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = local_settings.DEBUG
 
-ALLOWED_HOSTS = ['wladfilippow.pythonanywhere.com','127.0.0.1']
+ALLOWED_HOSTS = ['WladFilippow.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aeroports',
     'book_guide',
+    'books',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+STATIC_ROOT = "/var/www/example.com/static/"
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type

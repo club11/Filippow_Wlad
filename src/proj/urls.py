@@ -19,11 +19,16 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from aeroports import views as airport_names_views
 from book_guide import views as books_viesws
+from books import views as books_book_viesws
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('list_of_reference_books/', books_viesws.BookRef.as_view(), name="list_of_reference_books"),
-    path('book/<int:book_id>/', books_viesws.book, name="books"),
+
+    path('books/', books_book_viesws.BookListView.as_view(), name="books"),
+    path('book_detail/<int:pk>/', books_book_viesws.BookDetailView.as_view(), name="book_detail"),
+    
  
     path('genre/', books_viesws.GenreListView.as_view(), name="genres"),
     path('genre_detail/<int:pk>/', books_viesws.GenreDetailView.as_view(), name="genre_data"),
@@ -48,4 +53,7 @@ urlpatterns = [
     path('publisher_create/', books_viesws.PublisherCreateView.as_view(), name="publisher_create"),
     path('publisher_update/<int:pk>/', books_viesws.PublisherUpdateView.as_view(), name="publisher_update"),
     path('publisher_delete/<int:pk>/', books_viesws.PublisherDeleteView.as_view(), name="publisher_delete"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

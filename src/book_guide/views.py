@@ -1,3 +1,4 @@
+from django.db.models import fields
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView
@@ -106,10 +107,5 @@ class PublisherDeleteView(DeleteView):
     success_url = reverse_lazy('publishers')
 
 
-def book(request, book_id):
-    book = models.Book.objects.get(pk=book_id)
-    ctx = {
-        'book' : book
-    }
-    return render(request, template_name='book_detail.html', context=ctx) 
+
     
