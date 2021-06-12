@@ -3,12 +3,12 @@
 publisher_form
 {% endblock title %}
 {% block body %}
-    <h1>Добавить издательство:</h1>
+    <h1>Изменить издательство:</h1>
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}<br>
         <a href ='{% url "publishers" %}'><button>Назад к списку издательств</a></button>
-        <button type="submit">Добавить издательство</button>
+        <button type="submit">Изменить издательство</button>
     </form>
 {% endblock body %}
 

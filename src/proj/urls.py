@@ -19,17 +19,17 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from aeroports import views as airport_names_views
 from book_guide import views as books_viesws
-from books import views as books_book_viesws
 from django.conf import settings
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('list_of_reference_books/', books_viesws.BookRef.as_view(), name="list_of_reference_books"),
+    path('list_of_reference_books/', books_viesws.BookRef.as_view(), name="list_of_reference_books"), 
 
-    path('books/', books_book_viesws.BookListView.as_view(), name="books"),
-    path('book_detail/<int:pk>/', books_book_viesws.BookDetailView.as_view(), name="book_detail"),
-    
- 
+
+    path('book/', include('books.urls', namespace ='books_list')),
+
     path('genre/', books_viesws.GenreListView.as_view(), name="genres"),
     path('genre_detail/<int:pk>/', books_viesws.GenreDetailView.as_view(), name="genre_data"),
     path('genre_create/', books_viesws.GenreCreateView.as_view(), name="genre_create"),

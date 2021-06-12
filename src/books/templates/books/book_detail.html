@@ -1,35 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book</title>
-</head>
-<body>
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Книга {{ book }}</h5>
-          <p class="card-text">
-            <b>Имя: </b>{{ book }}</br>
-            <b>Автор</b>: {{ book.author }}<br>
-            <b>Серия </b>: {{ book.line }}<br>
-            <b>Жанр</b>: {{ book.genre }}<br>
-            <b>Год издания</b>: {{ book.publication_date }}<br>
-            <b>Количество страниц</b>: {{ book.pages }}<br>
-            <b>Возрастные ограничения</b>: {{ book.restrictions }}<br>
-            <b>Издатель</b>: {{ book.publisher }}<br>
-            <b>Количество книг в наличии</b>: {{ book.quantity_on_hand }}<br>            
-          </p>
-        </div>
-      </div>
-      <b>Доступен для заказа</b>: {% if book.active %} 
-      Да
-      {% else %}
-      Нет
-      {% endif %}
-      <br>
-      <b>Рейтинг</b>: {{ book.rating }}<br>   
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}
+book_detail
+{% endblock title %}
+{% block body %}
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Книга {{ book }}</h5>
+    <p class="card-text">
+      <b>Имя: </b>{{ object }}</br>
+      <b>Автор</b>: {{ object.author }}<br>
+      <b>Серия </b>: {{ object.line }}<br>
+      <b>Жанр</b>: {{ object.genre }}<br>
+      <b>Год издания</b>: {{ object.publication_date }}<br>
+      <b>Количество страниц</b>: {{ object.pages }}<br>
+      <b>Возрастные ограничения</b>: {{ object.restrictions }}<br>
+      <b>Издатель</b>: {{ object.publisher }}<br>
+      <b>Количество книг в наличии</b>: {{ object.quantity_on_hand }}<br>            
+    </p>
+  </div>
+</div>
+<b>Доступен для заказа</b>: {% if object.active %} 
+Да
+{% else %}
+Нет
+{% endif %}
+<br>
+<b>Рейтинг</b>: {{ object.rating }}<br>   
+<a href='{% url "books_list:books" %}'>
+  <button>Вернуться назад</button>
+  {% endblock body %}

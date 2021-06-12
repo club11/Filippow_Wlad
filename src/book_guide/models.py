@@ -68,96 +68,11 @@ class Publisher(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('publisher_data', args=[self.pk])
+        return reverse('publisher_detail', args=[self.pk])
 
     class Meta:
         verbose_name='Издатель'
         verbose_name_plural='Издатели' 
 
-class Book(models.Model): 
-    name = models.CharField(
-        verbose_name='Название книги',
-        max_length=40)
-    # фото обложки
-    price = models.FloatField(
-        verbose_name='Цена (BYN)'
-    ) 
 
-    author = models.ForeignKey(
-        Author, 
-        on_delete=models.PROTECT,
-        verbose_name='Автор'
-    )
-
-    line = models.ForeignKey(
-        Line, 
-        on_delete=models.PROTECT,
-        verbose_name='Серия',
-    )   
- 
-
-    genre = models.ForeignKey(
-        Genre, 
-        on_delete=models.PROTECT,
-        verbose_name='Жанр'
-    )
-    
-
-    publication_date = models.DateTimeField(
-        verbose_name='Год издания',
-        auto_now=False,	
-        auto_now_add=True
-    )
-
-    pages = models.IntegerField(
-        verbose_name='Количество страниц',
-        default=0
-    )
-    #binding= переплет 
-    picture = models.ImageField(
-        "Картинка",
-        upload_to='books/%Y/%m/%d/'
-    )
-    #ISBN
-    #вес (гр)
-    age_restrictions = models.BooleanField(
-        verbose_name='возрастные ограничения',
-        default=False
-    )
-    
-    publisher = models.ForeignKey(
-        Publisher, 
-        on_delete=models.PROTECT,
-        verbose_name='Издатель',
-    )     
-
-    quantity_on_hand = models.IntegerField(
-        verbose_name='количество книг в наличии'
-        #number=models.models.ForeignKey()
-    )
-    active = models.BooleanField(
-        verbose_name='доступен для заказа, ДА/Нет',
-        default=False
-    )
-    rating = models.IntegerField(
-        verbose_name='рейтинг (0 - 10)',
-        default=0
-    )
-        
-     #created = models.DateTimeField(
-    #    verbose_name='дата внесения в каталог',
-    #    auto_now=False,	
-    #    auto_now_add=True
-    #)
-    #updated = models.DateTimeField(
-    #    verbose_name='дата последнего редактирования карточки',
-    #    auto_now_add=True,
-    #    auto_created=False
-    #)
-    def __str__(self) -> str:
-        return f'Книга: {self.name}'
-
-    class Meta:
-        verbose_name='Книгу'
-        verbose_name_plural='Книги'
 

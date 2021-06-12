@@ -3,12 +3,12 @@
 author_form
 {% endblock title %}
 {% block body %}
-    <h1>Добавить автора:</h1>
+    <h1>Изменить автора:</h1>
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}<br>
         <a href ='{% url "authors" %}'><button>Назад к списку авторов</a></button>
-        <button type="submit">Добавить автора</button>
+        <button type="submit">Изменить автора</button>
     </form>
     {% endblock body %}
 

@@ -49,7 +49,7 @@ class Book(models.Model):
     publication_date = models.DateTimeField(
         verbose_name='Год издания',
         auto_now=False,	
-        auto_now_add=True
+        auto_now_add=True,
     )
 
     pages = models.IntegerField(
@@ -93,6 +93,10 @@ class Book(models.Model):
     #)
     def __str__(self) -> str:
         return f'Книга: {self.name}'
+
+
+    def get_absolute_url(self):
+        return reverse('books_list:book_detail', args=[self.pk])      
 
     class Meta:
         verbose_name='Книгу'

@@ -10,26 +10,43 @@ from . import models
 class BookListView(ListView):
     model = models.Book
 
-class BookDetailView(DeleteView):
+class BookDetailView(DetailView):
+    model = models.Book
+
+class BookCreateView(CreateView):
+        model = models.Book
+        fields = (
+            'name',
+            'author',
+            'price',
+            'line',
+            'genre',
+            #'publication_date',
+            'pages',
+            'age_restrictions',
+            'publisher',
+            'quantity_on_hand',
+            'active',
+            'rating',
+        )
+
+class BookUpdateView(UpdateView):
     model = models.Book
     fields = (
-        'name',
-        'author',
-        'line',
-        'genre',
-        'publication_date',
-        'pages',
-        'age_restrictions',
-        'publisher',
-        'quantity_on_hand',
-        'active',
-        'rating',
-    )
+            'name',
+            'author',
+            'price',
+            'line',
+            'genre',
+            #'publication_date',
+            'pages',
+            'age_restrictions',
+            'publisher',
+            'quantity_on_hand',
+            'active',
+            'rating',
+        )
 
-
-def book(request, book_id):
-    book = models.Book.objects.get(pk=book_id)
-    ctx = {
-        'book' : book
-    }
-    return render(request, template_name='book_detail.html', context=ctx) 
+class BookDeleteView(DeleteView):
+    model = models.Book
+    success_url = reverse_lazy('books_list:books')
