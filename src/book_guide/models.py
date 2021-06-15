@@ -17,7 +17,7 @@ class Genre(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('genre_data', args=[self.pk])        
+        return reverse('book_guide:genre_data', args=[self.pk])        
 
     class Meta:
         verbose_name='Жанр'
@@ -33,7 +33,7 @@ class Author(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('author_detail', args=[self.pk])
+        return reverse('book_guide:author_detail', args=[self.pk])
 
 
     class Meta:
@@ -51,7 +51,7 @@ class Line(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('lines_data', args=[self.pk])
+        return reverse('book_guide:lines_data', args=[self.pk])
 
     class Meta:
         verbose_name='Серия'
@@ -68,7 +68,7 @@ class Publisher(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('publisher_detail', args=[self.pk])
+        return reverse('book_guide:publisher_data', args=[self.pk])
 
     class Meta:
         verbose_name='Издатель'

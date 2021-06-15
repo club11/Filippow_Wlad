@@ -16,7 +16,7 @@
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}<br>
-        <a href ='{% url "genres" %}'><button>Назад к списку жанров</a></button>
+        <a href ='{% url "book_guide:genres" %}'><button>Назад к списку жанров</a></button>
         <button type="submit">Добавить жанр</button>
     </form>
 </body>

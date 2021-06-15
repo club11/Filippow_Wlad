@@ -7,15 +7,21 @@ from django.urls import reverse, reverse_lazy
 
 
 from . import models
-from . import forms
+#from . import forms
 
 # Create your views here.
 
-def list_of_reference_books(request):
-    return render(request, template_name='list_of_reference_books.html', context={})
 
 class BookRef(TemplateView):
-    template_name = 'book_guide/list_of_reference_books.html'
+    template_name = 'book_guide/list_refereces.html'
+
+    #success_url = reverse_lazy('book_guide:list_of_reference_books')
+    #success_url = reverse_lazy('book_guide:list_of_reference_books')
+\
+
+
+
+   
 
 
 class GenreListView(ListView):
@@ -38,7 +44,7 @@ class GenreCreateView(CreateView):
 
 class GenreDeleteView(DeleteView):
     model = models.Genre
-    success_url = reverse_lazy('genres')
+    success_url = reverse_lazy('book_guide:genres')
 
 class AuthorListView(ListView):
     model = models.Author
@@ -60,7 +66,7 @@ class AuthorCreateView(CreateView):
 
 class AuthorDeleteView(DeleteView):
     model = models.Author
-    success_url = reverse_lazy('authors')
+    success_url = reverse_lazy('book_guide:authors')
 
 class LineListView(ListView):
     model = models.Line
@@ -82,7 +88,7 @@ class LineCreateView(CreateView):
 
 class LineDeleteView(DeleteView):
     model = models.Line
-    success_url = reverse_lazy('lines')
+    success_url = reverse_lazy('book_guide:lines')
 
 class PublisherListView(ListView):
     model = models.Publisher
@@ -104,7 +110,7 @@ class PublisherCreateView(CreateView):
 
 class PublisherDeleteView(DeleteView):
     model = models.Publisher
-    success_url = reverse_lazy('publishers')
+    success_url = reverse_lazy('book_guide:publishers')
 
 
 

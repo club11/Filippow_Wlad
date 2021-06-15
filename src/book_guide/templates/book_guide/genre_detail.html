@@ -7,7 +7,7 @@ genre_detail
     <b>ID: </b>{{ object.pk }}</br>
     <b>Жанр</b>: {{ object }}<br>
     <b>Описание жанра</b>: {{ object.description }}<br>
-    <a href='{% url "genres" %}'>
+    <a href='{% url "book_guide:genres" %}'>
         <button>Вернуться назад</button>
       </a>  
 {% endblock body %}

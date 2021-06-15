@@ -130,6 +130,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = "/var/www/example.com/static/"
+
 MEDIA_ROOT = BASE_DIR / 'media'
 
 

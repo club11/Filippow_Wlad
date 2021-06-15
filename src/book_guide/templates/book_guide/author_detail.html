@@ -7,7 +7,7 @@ author_detail
     <h1>Автор</h1>
     <b>ID: </b>{{ object.pk }}</br>
     <b>Автор</b>: {{ object }}<br>
-    <a href='{% url "authors" %}'>
+    <a href='{% url "book_guide:authors" %}'>
         <button>Вернуться назад</button>
       </a>   
 {% endblock body %}

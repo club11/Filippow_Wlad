@@ -6,7 +6,7 @@ publisher_detail
     <h1>Издательство</h1>
     <b>ID: </b>{{ object.pk }}</br>
     <b>Издатель</b>: {{ object }}<br>
-    <a href='{% url "publishers" %}'>
+    <a href='{% url "book_guide:publishers" %}'>
         <button>Вернуться назад</button>
       </a>  
 {% endblock body %}

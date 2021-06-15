@@ -7,7 +7,7 @@ author_form
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}<br>
-        <a href ='{% url "authors" %}'><button>Назад к списку авторов</a></button>
+        <a href ='{% url "book_guide:authors" %}'><button>Назад к списку авторов</a></button>
         <button type="submit">Изменить автора</button>
     </form>
     {% endblock body %}

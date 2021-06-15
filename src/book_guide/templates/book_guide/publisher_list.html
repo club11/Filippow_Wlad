@@ -6,14 +6,14 @@ publisher_list
     <h1>Все издатели:</h1>
     <ul>
         {% for publisher in publisher_list %}
-            <li>Издатель {{ publisher.pk }}: <a href='{% url "publisher_data" publisher.pk %}'>{{ publisher }} </a>
-                || <a href='{% url "publisher_update" publisher.pk %}'>Редактировать</a>
-                || <a href='{% url "publisher_delete" publisher.pk %}'>Удалить</a></li>
+            <li>Издатель {{ publisher.pk }}: <a href='{% url "book_guide:publisher_data" publisher.pk %}'>{{ publisher }} </a>
+                || <a href='{% url "book_guide:publisher_update" publisher.pk %}'>Редактировать</a>
+                || <a href='{% url "book_guide:publisher_delete" publisher.pk %}'>Удалить</a></li>
         {% endfor %}
-        <a href='{% url "list_of_reference_books" %}'>
+        <a href='{% url "book_guide:book_references" %}'>
             <button>Вернуться назад</button>
           </a>     
-        <a href='{% url "publisher_create" %}'>
+        <a href='{% url "book_guide:publisher_create" %}'>
             <button>Добавить издательство</button>
           </a>     
     </ul>
