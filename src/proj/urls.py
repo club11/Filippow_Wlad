@@ -29,7 +29,7 @@ urlpatterns = [
     path('book/', include('books.urls', namespace ='books_list')),
     path('book_guide/', include('book_guide.urls', namespace ='book_guide')),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

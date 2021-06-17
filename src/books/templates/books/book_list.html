@@ -4,17 +4,27 @@ books_list
 {% endblock title %}
 {% block body %}
 <h1>Все книги:</h1>
-<ul>
-  {% for book in book_list %}
-      <li>Книга {{ book.pk }}: <a href='{% url "books_list:book_detail" book.pk %}'>{{ book }}</a>
-        || <a href='{% url "books_list:book_update" book.pk %}'>Редактировать</a>
-        || <a href='{% url "books_list:book_delete" book.pk %}'>Удалить</a></li>         
-      </li>
-  {% endfor %}
 
-    </a>     
-  <a href='{% url "books_list:book_create" %}'>
-      <button>Добавить книгу</button>
-    </a>   
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Название</th>
+      <th scope="col">Редактирование</th>
+      <th scope="col">Удаление</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for book in book_list %}
+    <tr>
+      <td scope="col">{{ book.pk }}</td>
+      <td scope="col"><a href='{% url "books_list:book_detail" book.pk %}'>{{ book }}</a></td>
+      <td scope="col"><a href='{% url "books_list:book_update" book.pk %}'>Редактировать</a></td>
+      <td scope="col"><a href='{% url "books_list:book_delete" book.pk %}'>Удалить</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href='{% url "books_list:book_create" %}'>
+  <button>Добавить книгу</button>
 {% endblock body %}
