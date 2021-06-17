@@ -84,29 +84,6 @@ home
         </div></div> 
         {% endfor %}
       </div>
-
-
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Название</th>
-        <th scope="col">Редактирование</th>
-        <th scope="col">Удаление</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for book in book_list %}
-      <tr>
-        <td>{{ book.pk }}</td>
-        <td><a href='{% url "books_list:book_detail" book.pk %}'>{{ book }}</a></td>
-        <td ><a href='{% url "books_list:book_update" book.pk %}'>Редактировать</a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <a href='{% url "books_list:book_create" %}'>
-    <button>Добавить книгу</button>
   {% endblock body %}
 
 

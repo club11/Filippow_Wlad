@@ -4,8 +4,9 @@
       <a class="nav-link active" aria-current="page" href="{% url 'books_list:home' %}">На главную</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'books_list:books' %}">Справочники</a>
+      <a class="nav-link" href="{% url 'book_guide:book_references' %}">Справочники</a>
     </li>
-
-    
-  </ul>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'books_list:books' %}">Перечень книг</a>
+    </li>
+</ul>
