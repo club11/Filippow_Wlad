@@ -5,13 +5,25 @@ books_list
 {% block body %}
 <h1>Все книги:</h1>
 
+<br>{{ user }}</br>
+<br>{{ user.groups.all }}</br>
+<br>{{ user.groups.all.0.name }}</br>
+<br>{{ user.is_superuser  }}</br>
+{% if perms.books.add_book %}
+<a href='{% url "books_list:book_create" %}'></a><button>Добавить книгу</button>
+{% endif %}
+<br>{% if user.is_superuser or user.is_staff  %} </br>
+  <a href='{% url "books_list:book_create" %}'></a><button>Добавить книгу</button>
+{% endif %}
+
+
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Название</th>
-      <th scope="col">Редактирование</th>
-      <th scope="col">Удаление</th>
+      {% if perms.books.change_book %}<th scope="col">Редактирование</th>{% endif %}
+      {% if perms.books.delete_book %}<th scope="col">Удаление</th>{% endif %}
     </tr>
   </thead>
   <tbody>
@@ -19,12 +31,16 @@ books_list
     <tr>
       <td scope="col">{{ book.pk }}</td>
       <td scope="col"><a href='{% url "books_list:book_detail" book.pk %}'>{{ book }}</a></td>
-      <td scope="col"><a href='{% url "books_list:book_update" book.pk %}'>Редактировать</a></td>
-      <td scope="col"><a href='{% url "books_list:book_delete" book.pk %}'>Удалить</a></td>
+      {% if perms.books.change_book %}<td scope="col"><a href='{% url "books_list:book_update" book.pk %}'>Редактировать</a></td>{% endif %}
+      {% if perms.books.delete_book %}<td scope="col"><a href='{% url "books_list:book_delete" book.pk %}'>Удалить</a></td>{% endif %}
     </tr>
     {% endfor %}
   </tbody>
 </table>
+{% if perms.books.add_book %}
 <a href='{% url "books_list:book_create" %}'>
   <button>Добавить книгу</button>
+  {% endif %}  
 {% endblock body %}
+
+

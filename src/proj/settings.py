@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'aeroports',
     'book_guide',
     'books',
+    'users',
 ]
 
 MIDDLEWARE = [

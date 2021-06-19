@@ -12,4 +12,8 @@ urlpatterns = [
     path('book_create/', books_book_viesws.BookCreateView.as_view(), name="book_create"),
     path('book_update/<int:pk>/', books_book_viesws.BookUpdateView.as_view(), name="book_update"),
     path('book_delete/<int:pk>/', books_book_viesws.BookDeleteView.as_view(), name="book_delete"),
+
+    path('home_customer/', books_book_viesws.HomeListViewCustomer.as_view(), name="home_customer"),
+
+
 ]
