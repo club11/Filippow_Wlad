@@ -9,26 +9,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 
 from . import models
 
-class HomeListView(ListView):
-    model = models.Book
-    template_name = 'books/home.html'
 
-    def get_context_data(self, **kwargs): 
-        context = super().get_context_data(**kwargs) 
-
-        in_prerev = models.Book.objects.reverse()           #in pre- reverse
-
-        last_added = in_prerev.order_by('publication_date')[:4] #last_added after reverse
-        cheapest = models.Book.objects.order_by('price')[:4] #-----cheapest
-        bestsellers = in_prerev.order_by('quantity_on_hand')[:4]
-
-        context['last_added'] = last_added
-        context['cheapest'] = cheapest  #order_by('price') ------cheapest
-        context['bestsellers'] = bestsellers
-        return context
 
 class BookListView(ListView):
     model = models.Book
+
 
 class BookDetailView(DetailView):
     model = models.Book
@@ -77,7 +62,23 @@ class BookDeleteView(PermissionRequiredMixin, DeleteView):
     permission_required = 'books.delete_book'
     success_url = reverse_lazy('books_list:books')
 
+class HomeListView(ListView):
+    model = models.Book
+    template_name = 'books/home.html'
 
+    def get_context_data(self, **kwargs): 
+        context = super().get_context_data(**kwargs) 
+
+        in_prerev = models.Book.objects.reverse()           #in pre- reverse
+
+        last_added = in_prerev.order_by('publication_date')[:4] #last_added after reverse
+        cheapest = models.Book.objects.order_by('price')[:4] #-----cheapest
+        bestsellers = in_prerev.order_by('quantity_on_hand')[:4]
+
+        context['last_added'] = last_added
+        context['cheapest'] = cheapest  #order_by('price') ------cheapest
+        context['bestsellers'] = bestsellers
+        return context
 
 
 class HomeListViewCustomer(LoginRequiredMixin, ListView):
@@ -99,3 +100,10 @@ class HomeListViewCustomer(LoginRequiredMixin, ListView):
         return context
 
 
+class BookListCustomerView(ListView):
+    model = models.Book
+    template_name = 'books/book_list_customer.html'
+
+class BookDetailCustomerView(DetailView):
+    model = models.Book    
+    template_name = 'books/book_detail_customer.html'

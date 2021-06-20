@@ -92,7 +92,7 @@ class Book(models.Model):
     #    auto_created=False
     #)
     def __str__(self) -> str:
-        return f'Книга: {self.name}'
+        return f'{self.name}'
 
 
     def get_absolute_url(self):

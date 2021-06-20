@@ -1,0 +1,33 @@
+{% extends "base_customer.html" %}
+{% block title %}
+book_detail_customer
+{% endblock title %}
+{% block body %}
+<div class="card" style="width: 18rem;">
+  <img src="{{ object.picture.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ book }}</h5>
+    <p class="card-text">
+      <b>Имя: </b>{{ object }}</br>
+      <b>Автор</b>: {{ object.author }}<br>
+      <b>Серия </b>: {{ object.line }}<br>
+      <b>Жанр</b>: {{ object.genre }}<br>
+      <b>Год издания</b>: {{ object.publication_date }}<br>
+      <b>Количество страниц</b>: {{ object.pages }}<br>
+      <b>Возрастные ограничения</b>: {{ object.restrictions }}<br>
+      <b>Издатель</b>: {{ object.publisher }}<br>
+      <b>Количество книг в наличии</b>: {{ object.quantity_on_hand }}<br>  
+      <b>Цена: </b>{{ object.price }}</br>                
+    </p>
+  </div>
+</div>
+<b>Доступен для заказа</b>: {% if object.active %} 
+Да
+{% else %}
+Нет
+{% endif %}
+<br>
+<b>Рейтинг</b>: {{ object.rating }}<br>   
+<a href='{% url "books_list:book_list_customer" %}'>
+  <button>Вернуться назад</button>
+{% endblock body %}
