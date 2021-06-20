@@ -28,10 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('book/', include('books.urls', namespace ='books_list')),
     path('book_guide/', include('book_guide.urls', namespace ='book_guide')),
-
     path('log/', include('users.urls', namespace ='login')),
-
-
 ] 
 
 if settings.DEBUG:

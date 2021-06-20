@@ -3,12 +3,20 @@
 list_of_reference_books
 {% endblock title %}
 {% block body %}
+<style>
+    li {
+     list-style-type: none; /* Убираем маркеры */
+    }
+</style>
     <h1>Список всех справочников:</h1>
     <ul>
-        <li><a href='/book_guide/genre' class="btn btn-dark">Жанр</li>
-        <li><a href='/book_guide/author' class="btn btn-dark">Автор</li>
-        <li><a href='/book_guide/line' class="btn btn-dark">Серия</li>
-        <li><a href='/book_guide/publisher' class="btn btn-dark">Издатель</li>
+        <li><a href='/book_guide/genre' class="btn btn-dark">Жанр</a></li>
+        <li><a href='/book_guide/author' class="btn btn-dark">Автор</a></li>
+        <li><a href='/book_guide/line' class="btn btn-dark">Серия</a></li>
+        <li><a href='/book_guide/publisher' class="btn btn-dark">Издатель</a></li>
     </ul>
 {% endblock body %}
+
+
+
 

@@ -98,6 +98,7 @@ class HomeListViewCustomer(LoginRequiredMixin, ListView):
         context['cheapest'] = cheapest  #order_by('price') ------cheapest
         context['bestsellers'] = bestsellers
         return context
+        
 
 
 class BookListCustomerView(ListView):
@@ -107,3 +108,8 @@ class BookListCustomerView(ListView):
 class BookDetailCustomerView(DetailView):
     model = models.Book    
     template_name = 'books/book_detail_customer.html'
+
+
+
+
+

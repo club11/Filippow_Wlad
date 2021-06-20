@@ -11,7 +11,7 @@ from book_guide.models import Genre, Author, Line, Publisher
 class Book(models.Model): 
     name = models.CharField(
         verbose_name='Название книги',
-        max_length=40)
+        max_length=60)
     # фото обложки
     price = models.FloatField(
         verbose_name='Цена (BYN)'

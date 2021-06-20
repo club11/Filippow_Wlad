@@ -11,7 +11,7 @@ from .forms import UserProfileForm
 from django.views.generic import CreateView, DetailView
 
 class MyLoginView(LoginView):
-    template_name = 'users/registration.html'
+    template_name = 'users/userlogin.html'
 
 
 class MyLoginPasswordChangeView(PasswordChangeView):
