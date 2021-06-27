@@ -1,10 +1,13 @@
 from django.db.models.query_utils import Q
 from django.shortcuts import render
+from django.urls.base import reverse
 #from django.db import models
 from . import models
-from django.views.generic import UpdateView, DetailView
+from django.views.generic import UpdateView, DetailView, DeleteView
+from django.views import View
+from django.http import HttpResponseRedirect
 from books import models as books_models
-#from ..books import models as books_models
+from django.urls import reverse_lazy
 
 
 class CartView(DetailView):
@@ -12,7 +15,7 @@ class CartView(DetailView):
     model = models.Cart
 
     def get_object(self, queryset=None):
-        # get cart      
+        # get cart        
         cart_id = self.request.session.get('cart_id')
         cart, created = models.Cart.objects.get_or_create(    # id of the cart
             pk=cart_id,
@@ -39,5 +42,34 @@ class CartView(DetailView):
             #else:
             #    book_in_cart.unit_price = book.price
         return cart
+
+
+class CartDeleteView(DeleteView):
+    model = models.BooksInCart
+    success_url = reverse_lazy('carts:cart_edit')
+
+class CartUpdate(View):
+    def post(self, request):
+        # get cart        
+        cart_id = self.request.session.get('cart_id')
+        cart, created = models.Cart.objects.get_or_create(    # id of the cart
+            pk=cart_id,
+            defaults={}
+        )
+        if created:
+            self.request.session['cart_id'] = cart.pk  
+        goods = cart.goods.all()
+        if goods:
+            #def post(self, request):
+            for key, value in request.POST.items():
+                if 'quantityforgood_' in key:
+                    pk = int(key.split('_')[1])
+                    good = goods.get(pk=pk)
+                    good.quantity = int(value)
+                    good.save()
+
+
+        return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
+
 
 

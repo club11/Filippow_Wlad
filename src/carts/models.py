@@ -21,6 +21,16 @@ class Cart(models.Model):
         auto_now_add=True,
     )
 
+    @property
+    def total_price(self):
+        total_price = 0
+        goods = self.goods.all()
+        for good in goods:
+            total_price += good.total_price
+        return total_price
+
+
+
 class BooksInCart(models.Model):
     cart = models.ForeignKey(
         Cart,
@@ -42,3 +52,7 @@ class BooksInCart(models.Model):
         max_digits=5,
         decimal_places=2
     )
+
+    @property
+    def total_price(self):
+        return self.unit_price * self.quantity

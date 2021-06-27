@@ -5,10 +5,40 @@ cart_edit
 {% endblock title %}
 {% block body %}
 <h1>Корзина:</h1>
-
-{{ object }}
-{{ object.goods.all }}
-
+<form action="{% url 'carts:update_good_in_cart' %}" method="POST">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Книга</th>
+      <th scope="col">Количество</th>
+      <th scope="col">Цена</th>
+      <th scope="col">-</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for good in object.goods.all %}
+    <tr>
+      <td>{{ forloop.counter}} </td>
+      <td>{{ good.book}} {{ good.book.author}}</td>
+      <td>
+        <div class="mb-3">
+          <input type="number" name="quantityforgood_{{ good.pk }}" min="1" step="1" class="form-control" style="max-width:80px;" value="{{ good.quantity}}">
+        </div>
+      </td>
+      <td>{{ good.unit_price}} </td>
+      <td><form action="{% url 'carts:delete_good_in_cart' good.pk %}" method="post">{% csrf_token %} <button type="submit" class="btn btn-sm btn-danger">Удалить</button></form></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tr>
+    <td colspan="3">Всего:</td>
+    <td>{{ object.total_price }}</td>
+    <td></td>
+  </tr>
+</table>
+<button type="submit" class="btn btn-warning" name="submit" value="save_cart">Сохранить</button>
+</form>
 
 {% endblock body %}
 
