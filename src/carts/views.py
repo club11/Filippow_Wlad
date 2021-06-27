@@ -50,6 +50,7 @@ class CartDeleteView(DeleteView):
 
 class CartUpdate(View):
     def post(self, request):
+        action = request.POST.get('submit')
         # get cart        
         cart_id = self.request.session.get('cart_id')
         cart, created = models.Cart.objects.get_or_create(    # id of the cart
@@ -67,9 +68,13 @@ class CartUpdate(View):
                     good = goods.get(pk=pk)
                     good.quantity = int(value)
                     good.save()
+        if action == 'save_cart':            
+            return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
+        elif action == 'create_order':
+            return HttpResponseRedirect(reverse_lazy('carts:arder_form'))  ####### переоформить заказ в ДРУГОЕ ПРИЛОЖЕНИЕ
+        else:
+            return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
 
-
-        return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
 
 
 
