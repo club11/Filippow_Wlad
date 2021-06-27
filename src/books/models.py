@@ -6,6 +6,7 @@ from django.urls import reverse, reverse_lazy
 #from book_guide.models import Genre, Author, Line, Publisher
 #import book_guide.models
 #from .models import Genre, Author, Line, Publisher
+
 from book_guide.models import Genre, Author, Line, Publisher
 
 class Book(models.Model): 

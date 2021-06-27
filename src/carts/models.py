@@ -24,6 +24,7 @@ class Cart(models.Model):
 class BooksInCart(models.Model):
     cart = models.ForeignKey(
         Cart,
+        related_name='goods',
         on_delete=models.CASCADE,
         verbose_name='Cart'   
     )

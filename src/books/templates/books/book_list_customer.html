@@ -8,6 +8,34 @@ book_list_customer
 
 <div class="container-fluid">
   <div class="row"> 
+    {% for object in book_list  %}
+    <div class="col-xl-3" style="width: 16rem;">
+      <div class="card-body">
+        <img src="{{ object.picture.url }}" class="card-img-top" alt="...">
+        <h5 class="card-title">{{ object }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ object.author }}</h6>
+        <p class="card-text">
+          <b>Количество книг в наличии: </b>{{ object.quantity_on_hand }}</br> 
+          <b>Цена: </b>{{ object.price }}</br>                
+        </p>
+        <a href='{% url "books_list:book_detail_customer" object.pk %}' class="card-link">Подробнее</a>
+        <a href='{% url "carts:cart_edit" %}?object_id={{ object.pk }}' class="card-link"> В корзину</a>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>  
+
+{% endblock body %}
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row"> 
     {% for book in book_list  %}
     <div class="col-xl-3" style="width: 16rem;">
       <div class="card-body">
@@ -26,8 +54,6 @@ book_list_customer
     {% endfor %}
   </div>
 </div>  
-
-{% endblock body %}
 
 
 

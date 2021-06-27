@@ -1,8 +1,11 @@
 from django.db.models.query_utils import Q
 from django.shortcuts import render
+#from django.db import models
 from . import models
 from django.views.generic import UpdateView, DetailView
 from books import models as books_models
+#from ..books import models as books_models
+
 
 class CartView(DetailView):
     template_name = 'carts/cart_edit.html'
@@ -18,9 +21,9 @@ class CartView(DetailView):
         if created:
             self.request.session['cart_id'] = cart.pk
         #get book_in_cart
-        book_id=self.request.GET.get('book.pk')
-        if book_id:
-            book = books_models.Book.objects.get(pk=int(book_id))
+        object_id=self.request.GET.get('object_id')
+        if object_id:
+            book = books_models.Book.objects.get(pk=int(object_id))
             book_in_cart, book_created = models.BooksInCart.objects.get_or_create(   
             cart=cart,
             book=book,
@@ -37,15 +40,4 @@ class CartView(DetailView):
             #    book_in_cart.unit_price = book.price
         return cart
 
-    def get_context_data(self, **kwargs): 
-        book_id=self.request.GET.get('book.pk')
-        context = super().get_context_data(**kwargs) 
-        qs = models.Cart.objects.get(book_id)
-        context['qs'] = qs 
-        return context
 
-
-
-class BooksInCartView(DetailView):
-    model = models.BooksInCart
-    template_name = 'carts/book_in_cart.html'
