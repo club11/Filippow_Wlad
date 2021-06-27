@@ -17,9 +17,9 @@ from django import urls
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from aeroports import views as airport_names_views
 from book_guide import views as books_viesws
 from users import views as users_viesws
+from carts import views as carts_viesws
 from django.conf import settings
 
 #from django.contrib.auth import views as auth_views
@@ -29,6 +29,7 @@ urlpatterns = [
     path('book/', include('books.urls', namespace ='books_list')),
     path('book_guide/', include('book_guide.urls', namespace ='book_guide')),
     path('log/', include('users.urls', namespace ='login')),
+    path('cart/', include('carts.urls', namespace ='carts')),
 ] 
 
 if settings.DEBUG:

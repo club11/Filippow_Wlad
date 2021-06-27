@@ -1,0 +1,39 @@
+
+{% extends "base_customer.html" %}
+{% block title %}
+cart_edit
+{% endblock title %}
+{% block body %}
+<h1>Корзина:</h1>
+
+Сына-корзина {{cart}}
+
+{{cheapest}}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Пользователь</th>
+        <th scope="col">Товар в корзине</th>
+        <th scope="col">Дата создания</th>
+        <th scope="col">Дата редактирования</th>
+      </tr>
+    </thead>
+    <tbody>
+        <td scope="col">{{ object.customer }}</td>
+        <td scope="col">{{ object }}</td>
+        <td scope="col">{{ object.order_date }}</td>
+        <td scope="col">{{ object.order_date }}</td>
+    </tbody>
+  </table>
+
+
+
+<ul>
+<li>{{cart}}</li>
+
+
+
+</ul>
+
+{% endblock body %}
+<td scope="col"><a href='{% url "books_list:book_detail" book.pk %}'>{{ book }}</a></td>

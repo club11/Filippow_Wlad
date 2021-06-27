@@ -7,10 +7,12 @@ book_form
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}<br>
-    <a href ='{% url "books_list:books" %}'><button>Назад к списку книг</a></button>
-    <button type="submit">Добавить книгу</button>
+    <a href ='{% url "books_list:book_list" %}'><button type="button" class="btn btn-light">Назад к списку книг</a></button>
+    <button type="submit" class="btn btn-light">Добавить книгу</button>
 </form>
 {% endblock body %}
+
+<button type="button" class="btn btn-light"></button>
 
 
 

@@ -60,24 +60,3 @@ books_list
 <a href='{% url "books_list:book_create" %}'>
   <button>Добавить книгу</button>
   {% endif %}  
-#######################################
-
-
-
-
-
-
-#############################
-
-<br>{{ user }}</br>
-<br>{{ user.groups.all }}</br>
-<br>{{ user.groups.all.0.name }}</br>
-<br>{{ user.is_superuser  }}</br>
-{% if perms.books.add_book %}
-<a href='{% url "books_list:book_create" %}'></a><button>Добавить книгу</button>
-{% endif %}
-<br>{% if user.is_superuser or user.is_staff  %} </br>
-  <a href='{% url "books_list:book_create" %}'></a><button>Добавить книгу</button>
-{% endif %}
-
-##############################

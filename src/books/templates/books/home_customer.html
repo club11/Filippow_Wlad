@@ -8,7 +8,7 @@ home_customer.html
 
 <div class="container">
   <div class="row">
-    {% for last_added in home %}
+    {% for last_added in home_customer %}
     <div class="col-sm">{{ book.pk }}</div>
     {% endfor %}    
   </div>
@@ -34,7 +34,9 @@ home_customer.html
               <b>Возрастные ограничения</b>: {{ object.restrictions }}<br>
               <b>Издатель</b>: {{ object.publisher }}<br>
               <b>Количество книг в наличии</b>: {{ object.quantity_on_hand }}<br>  
-              <b>Цена: </b>{{ object.price }}</br>                
+              <b>Цена: </b>{{ object.price }}</br>
+              <a href='{% url "books_list:book_detail_customer" object.pk %}' class="card-link"><button type="button" class="btn btn-light; text-decoration: none;"></button>Подробнее</a>
+              <a href='{% url "carts:cart_edit" %}?book_id={{ object.pk }}' class="card-link"> В корзину</a>                
             </p>
           </div>
         </div></div> 

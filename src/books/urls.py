@@ -7,7 +7,8 @@ app_name = 'books'
 urlpatterns = [
     path('home/', books_book_viesws.HomeListView.as_view(), name="home"),
 
-    path('books/', books_book_viesws.BookListView.as_view(), name="books"),
+    #path('books/', books_book_viesws.BookListView.as_view(), name="books"),
+    path('book_list/', books_book_viesws.BookListView.as_view(), name="book_list"),
     path('book_detail/<int:pk>/', books_book_viesws.BookDetailView.as_view(), name="book_detail"),
     path('book_create/', books_book_viesws.BookCreateView.as_view(), name="book_create"),
     path('book_update/<int:pk>/', books_book_viesws.BookUpdateView.as_view(), name="book_update"),
