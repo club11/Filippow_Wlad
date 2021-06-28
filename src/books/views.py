@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+#from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from . import models
 
@@ -18,7 +18,8 @@ class BookListView(ListView):
 class BookDetailView(DetailView):
     model = models.Book
 
-class BookCreateView(LoginRequiredMixin, CreateView):
+#class BookCreateView(LoginRequiredMixin, CreateView):
+class BookCreateView(CreateView):
     model = models.Book
     fields = (
         'picture',
@@ -35,8 +36,8 @@ class BookCreateView(LoginRequiredMixin, CreateView):
         'active',
         'rating',
         )
-    login_url = '/login/'
-    redirect_field_name = 'redirect_to'        
+    #login_url = '/login/'
+    #redirect_field_name = 'redirect_to'        
 
 class BookUpdateView(UpdateView):
     model = models.Book
@@ -56,11 +57,16 @@ class BookUpdateView(UpdateView):
         'rating',
         )
 
-class BookDeleteView(PermissionRequiredMixin, DeleteView):
-    model = models.Book
-    login_url = '/login/'
-    permission_required = 'books.delete_book'
-    success_url = reverse_lazy('books_list:books')
+
+class BookDeleteViiew(DeleteView):
+    model= models.Book
+    success_url = reverse_lazy('books_list:book_list')
+
+#class BookDeleteView(PermissionRequiredMixin, DeleteView):
+#    model = models.Book
+#    #login_url = '/login/'
+#    #permission_required = 'books.delete_book'
+#    success_url = reverse_lazy('books_list:books')
 
 class HomeListView(ListView):
     model = models.Book
@@ -81,12 +87,13 @@ class HomeListView(ListView):
         return context
 
 
-class HomeListViewCustomer(LoginRequiredMixin, ListView):
+#class HomeListViewCustomer(LoginRequiredMixin, ListView):
+class HomeListViewCustomer(ListView):
     model = models.Book
     template_name = 'books/home_customer.html'
 
-    login_url = '/login/'
-    redirect_field_name = 'redirect_to' 
+    #login_url = '/login/'
+    #redirect_field_name = 'redirect_to' 
 
     def get_context_data(self, **kwargs): 
         context = super().get_context_data(**kwargs) 

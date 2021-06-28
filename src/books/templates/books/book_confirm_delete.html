@@ -3,10 +3,13 @@
 book_confirm_delete
 {% endblock title %}
 {% block body %}
+
+{{ user }}
+
     <h1>Удалить книгу?</h1>
     <form action="" method="POST">
         {% csrf_token %}
-        <button type="button" class="btn btn-light">Удалить</button>
+        <button type="submit">Удалить</button>
     </form>
 {% endblock body %}
 
