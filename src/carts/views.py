@@ -71,7 +71,7 @@ class CartUpdate(View):
         if action == 'save_cart':            
             return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
         elif action == 'create_order':
-            return HttpResponseRedirect(reverse_lazy('carts:arder_form'))  ####### переоформить заказ в ДРУГОЕ ПРИЛОЖЕНИЕ
+            return HttpResponseRedirect(reverse_lazy('orders:create_order'))  ####### переоформить заказ в ДРУГОЕ ПРИЛОЖЕНИЕ
         else:
             return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
 

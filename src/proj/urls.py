@@ -30,6 +30,7 @@ urlpatterns = [
     path('book_guide/', include('book_guide.urls', namespace ='book_guide')),
     path('log/', include('users.urls', namespace ='login')),
     path('cart/', include('carts.urls', namespace ='carts')),
+    path('orders/', include('orders.urls', namespace ='orders')),
 ] 
 
 if settings.DEBUG:
