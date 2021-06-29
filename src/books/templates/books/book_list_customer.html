@@ -19,14 +19,13 @@ book_list_customer
           <b>Цена: </b>{{ object.price }}</br>                
         </p>
         <a href='{% url "books_list:book_detail_customer" object.pk %}' class="card-link"><button type="button" class="btn btn-sm btn-warning" text-decoration: none;">Подробнее</button></a>
-        <a href='{% url "carts:cart_edit" %}?book_id={{ object.pk }}'><button type="submit" class="btn btn-sm btn-danger" text-decoration: none;">В корзину</button></a>  
+        <a href='{% url "carts:cart_edit" %}?object_id={{ object.pk }}'><button type="submit" class="btn btn-sm btn-danger" text-decoration: none;">В корзину</button></a>  
 
       </div>
     </div>
     {% endfor %}
   </div>
 </div>  
-
 {% endblock body %}
 
 
