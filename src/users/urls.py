@@ -8,7 +8,10 @@ app_name = 'users'
 
 urlpatterns = [
     path('login/', users_viesws.MyLoginView.as_view(), name='userlogin'),
-    path('passwordchange/', users_viesws.MyLoginPasswordChangeView.as_view(), name='passwrdchnge'),
+    path('register/', users_viesws.Registerview.as_view(), name='register'),
+    
 
+
+    #path('passwordchange/', users_viesws.MyLoginPasswordChangeView.as_view(), name='passwrdchnge'),
     #path('userprofile/', users_viesws.UserProfileDetailView.as_view(), name='userprofile'),
 ]
