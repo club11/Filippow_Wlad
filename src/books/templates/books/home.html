@@ -24,8 +24,8 @@ home
               <b>Издатель</b>: {{ object.publisher }}<br>
               <b>Количество книг в наличии</b>: {{ object.quantity_on_hand }}<br>  
               <b>Цена: </b>{{ object.price }}</br>   
-              <a href='{% url "books_list:book_detail" object.pk %}' class="card-link">Подробнее</a>
-              <a href='{% url "carts:cart_edit" %}?book_id={{ object.pk }}' class="card-link"> В корзину</a>               
+              <a href='{% url "books_list:book_detail" object.pk %}' class="card-link"><button type="button" class="btn btn-sm btn-warning" text-decoration: none;">Подробнее</button></a>
+              <a href='{% url "carts:cart_edit" %}?book_id={{ object.pk }}'><button type="submit" class="btn btn-sm btn-danger" text-decoration: none;">В корзину</button></a>                            
             </p>
           </div>
         </div></div> 
@@ -48,8 +48,8 @@ home
               <b>Издатель</b>: {{ object.publisher }}<br>
               <b>Количество книг в наличии</b>: {{ object.quantity_on_hand }}<br>  
               <b>Цена: </b>{{ object.price }}</br> 
-              <a href='{% url "books_list:book_detail" object.pk %}' class="card-link">Подробнее</a>
-              <a href='{% url "carts:cart_edit" %}?book_id={{ object.pk }}' class="card-link"> В корзину</a>                 
+              <a href='{% url "books_list:book_detail" object.pk %}' class="card-link"><button type="button" class="btn btn-sm btn-warning" text-decoration: none;">Подробнее</button></a>
+              <a href='{% url "carts:cart_edit" %}?book_id={{ object.pk }}'><button type="submit" class="btn btn-sm btn-danger" text-decoration: none;">В корзину</button></a>  
             </p>
           </div>
         </div></div> 
@@ -72,8 +72,8 @@ home
               <b>Издатель</b>: {{ object.publisher }}<br>
               <b>Количество книг в наличии</b>: {{ object.quantity_on_hand }}<br>  
               <b>Цена: </b>{{ object.price }}</br> 
-              <a href='{% url "books_list:book_detail" object.pk %}' class="card-link">Подробнее</a>
-              <a href='{% url "carts:cart_edit" %}?book_id={{ object.pk }}' class="card-link"> В корзину</a>   
+              <a href='{% url "books_list:book_detail" object.pk %}' class="card-link"><button type="button" class="btn btn-sm btn-warning" text-decoration: none;">Подробнее</button></a>
+              <a href='{% url "carts:cart_edit" %}?book_id={{ object.pk }}'><button type="submit" class="btn btn-sm btn-danger" text-decoration: none;">В корзину</button></a>  
             </p>
           </div>
         </div></div> 

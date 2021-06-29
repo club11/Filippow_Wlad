@@ -17,16 +17,16 @@ books_list
     {% for book in book_list %}
     <tr>
       <td scope="col">{{ book.pk }}</td>
-      <td scope="col"><a href='{% url "books_list:book_detail" book.pk %}'>{{ book }}</a></td>
-      {% if perms.books.change_book %}<td scope="col"><a href='{% url "books_list:book_update" book.pk %}'>Редактировать</a></td>{% endif %}
-      {% if perms.books.delete_book %}<td scope="col"><a href='{% url "books_list:book_delete" book.pk %}'>Удалить</a></td>{% endif %}
+      <td scope="col"><a href='{% url "books_list:book_detail" book.pk %}' style="text-decoration: none;  color: #050505; ">{{ book }}</a></td>
+      {% if perms.books.change_book %}<td scope="col"><a href='{% url "books_list:book_update" book.pk %}'><button type="button" class="btn btn-sm btn-warning" text-decoration: none;">Редактировать</button></a></td>{% endif %}
+      {% if perms.books.delete_book %}<td scope="col"><a href='{% url "books_list:book_delete" book.pk %}'><button type="button" class="btn btn-sm btn-warning" text-decoration: none;">Удалить</button></a></td>{% endif %}
     </tr>
     {% endfor %}
   </tbody>
 </table>
 {% if perms.books.add_book %}
 <a href='{% url "books_list:book_create" %}'>
-  <button>Добавить книгу</button>
+  <button type="button" class="btn btn-sm btn-warning" text-decoration: none;">Добавить книгу</button>
   {% endif %}  
 
 

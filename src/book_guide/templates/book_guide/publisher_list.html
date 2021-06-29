@@ -3,23 +3,53 @@
 publisher_list
 {% endblock title %}
 {% block body %}
-    <h1>Все издатели:</h1>
-    <ul>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Издатель</th>
+        <th scope="col">#</th>
+        <th scope="col">#</th>
+      </tr>
+    </thead>
+    <tbody>
         {% for publisher in publisher_list %}
-            <li>Издатель {{ publisher.pk }}: <a href='{% url "book_guide:publisher_data" publisher.pk %}'>{{ publisher }} </a>
-                || <a href='{% url "book_guide:publisher_update" publisher.pk %}'>Редактировать</a>
-                || <a href='{% url "book_guide:publisher_delete" publisher.pk %}'>Удалить</a></li>
+      <tr>
+        <th scope="row">{{ publisher.pk }}</th>
+        <td><a href='{% url "book_guide:publisher_data" publisher.pk %}' style="text-decoration: none">{{ publisher }}</a></td>
+        <td><a href='{% url "book_guide:publisher_update" publisher.pk %}' style="text-decoration: none">Редактировать</a></td>
+        <td><a href='{% url "book_guide:publisher_delete" publisher.pk %}' style="text-decoration: none">Удалить</a></td>
         {% endfor %}
-        <a href='{% url "book_guide:book_references" %}'>
-            <button>Вернуться назад</button>
-          </a>     
-        <a href='{% url "book_guide:publisher_create" %}'>
-            <button>Добавить издательство</button>
-          </a>     
-    </ul>
+      </tr>
+  </table>
+  <a href='{% url "book_guide:book_references" %}'>
+    <button class="btn btn-sm btn-warning" text-decoration: none>Вернуться назад</button>
+  </a>     
+<a href='{% url "book_guide:publisher_create" %}'>
+    <button class="btn btn-sm btn-warning" text-decoration: none>Добавить издательство</button>
+  </a>     
 {% endblock body %}
 
 
 
 
 
+################################################################################################################################
+
+<h1>Все издатели:</h1>
+<ul>
+    {% for publisher in publisher_list %}
+        <li>Издатель {{ publisher.pk }}: <a href='{% url "book_guide:publisher_data" publisher.pk %}'>{{ publisher }} </a>
+            || <a href='{% url "book_guide:publisher_update" publisher.pk %}'>Редактировать</a>
+            || <a href='{% url "book_guide:publisher_delete" publisher.pk %}'>Удалить</a></li>
+    {% endfor %}
+    <a href='{% url "book_guide:book_references" %}'>
+        <button>Вернуться назад</button>
+      </a>     
+    <a href='{% url "book_guide:publisher_create" %}'>
+        <button>Добавить издательство</button>
+      </a>     
+</ul>
+
+################################################################################################################################

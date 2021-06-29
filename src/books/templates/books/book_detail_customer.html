@@ -3,9 +3,9 @@
 book_detail_customer
 {% endblock title %}
 {% block body %}
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 25rem;">
   <img src="{{ object.picture.url }}" class="card-img-top" alt="...">
-  <div class="card-body">
+  <div class="card-body;">
     <h5 class="card-title">{{ book }}</h5>
     <p class="card-text">
       <b>Имя: </b>{{ object }}</br>
@@ -17,7 +17,7 @@ book_detail_customer
       <b>Возрастные ограничения</b>: {{ object.restrictions }}<br>
       <b>Издатель</b>: {{ object.publisher }}<br>
       <b>Количество книг в наличии</b>: {{ object.quantity_on_hand }}<br>  
-      <b>Цена: </b>{{ object.price }}</br>                
+      <b>Цена: </b>{{ object.price }}</br>                 
     </p>
   </div>
 </div>
@@ -29,5 +29,9 @@ book_detail_customer
 <br>
 <b>Рейтинг</b>: {{ object.rating }}<br>   
 <a href='{% url "books_list:book_list_customer" %}'>
-  <button type="button" class="btn btn-light">Вернуться назад</button>
+  <button type="button" class="btn btn-sm btn-warning">Вернуться назад</button>
 {% endblock body %}
+
+
+
+

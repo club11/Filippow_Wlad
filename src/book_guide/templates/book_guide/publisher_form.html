@@ -7,8 +7,8 @@ publisher_form
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}<br>
-        <a href ='{% url "book_guide:publishers" %}'><button>Назад к списку издательств</a></button>
-        <button type="submit">Изменить издательство</button>
+        <a href ='{% url "book_guide:publishers" %}'><button type="button" class="btn btn-sm btn-warning ; text-decoration: none">Назад к списку издательств</button></a>
+        <button type="submit" class="btn btn-sm btn-danger ; text-decoration: none">Изменить издательство</button>
     </form>
 {% endblock body %}
 

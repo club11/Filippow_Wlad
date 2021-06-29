@@ -8,6 +8,6 @@ book_update
         {% csrf_token %}
         {{ form.as_p }}<br>
         <a href ='{% url "books_list:book_list" %}'><button>Назад к списку книг</a></button>
-        <button type="submit">Внести изменения </button>
+        <button type="submit" class="btn btn-sm btn-warning" text-decoration: none;">Внести изменения </button>
     </form>
 {% endblock body %}

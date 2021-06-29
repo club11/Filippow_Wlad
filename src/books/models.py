@@ -79,7 +79,11 @@ class Book(models.Model):
     )
     rating = models.IntegerField(
         verbose_name='рейтинг (0 - 10)',
-        default=0
+        default=0,
+        #validators=[
+        #    MinValueValidator(0),
+        #   MaxValueValidator(10)
+        #]
     )
         
      #created = models.DateTimeField(

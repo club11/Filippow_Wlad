@@ -8,7 +8,7 @@ genre_detail
     <b>Жанр</b>: {{ object }}<br>
     <b>Описание жанра</b>: {{ object.description }}<br>
     <a href='{% url "book_guide:genres" %}'>
-        <button>Вернуться назад</button>
+        <button class="btn btn-sm btn-warning" text-decoration: none;>Вернуться назад</button>
       </a>  
 {% endblock body %}
 

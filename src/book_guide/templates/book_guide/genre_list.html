@@ -3,17 +3,50 @@
 genre_list
 {% endblock title %}
 {% block body %}
-    <h1>Все жанры:</h1>
-    <ul>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Жанр</th>
+        <th scope="col">#</th>
+        <th scope="col">#</th>
+      </tr>
+    </thead>
+    <tbody>
         {% for genre in genre_list %}
-        <b><li>Genre {{ genre.pk }}:</b> <a href='{% url "book_guide:genre_data" genre.pk %}'>{{ genre }}</a>
-            || <a href='{% url "book_guide:genre_update" genre.pk %}'>Редактировать</a>
-            || <a href='{% url "book_guide:genre_delete" genre.pk %}'>Удалить</a></li>
+      <tr>
+        <th scope="row">{{ genre.pk }}</th>
+        <td><a href='{% url "book_guide:genre_data" genre.pk %}' style="text-decoration: none">{{ genre }}</a></td>
+        <td><a href='{% url "book_guide:genre_update" genre.pk %}' style="text-decoration: none">Редактировать</a></td>
+        <td><a href='{% url "book_guide:genre_delete" genre.pk %}' style="text-decoration: none">Удалить</a></td>
         {% endfor %}
-        <a href='{% url "book_guide:book_references" %}'>
-            <button>Вернуться назад</button>
-          </a>     
-        <a href='{% url "book_guide:genre_create" %}'>
-            <button>Добавить жанр</button>
-    </ul>
+      </tr>
+  </table>
+  <a href='{% url "book_guide:book_references" %}'>
+    <button class="btn btn-sm btn-warning" text-decoration: none>Вернуться назад</button>
+  </a>     
+<a href='{% url "book_guide:genre_create" %}'>
+    <button class="btn btn-sm btn-warning" text-decoration: none>Добавить жанр</button>
+  </a>   
+
+
 {% endblock body %}
+
+
+################################################################################################################################
+
+<h1>Все жанры:</h1>
+<ul>
+    {% for genre in genre_list %}
+    <b><li>Genre {{ genre.pk }}:</b> <a href='{% url "book_guide:genre_data" genre.pk %}'>{{ genre }}</a>
+        || <a href='{% url "book_guide:genre_update" genre.pk %}'>Редактировать</a>
+        || <a href='{% url "book_guide:genre_delete" genre.pk %}'>Удалить</a></li>
+    {% endfor %}
+    <a href='{% url "book_guide:book_references" %}'>
+        <button>Вернуться назад</button>
+      </a>     
+    <a href='{% url "book_guide:genre_create" %}'>
+        <button>Добавить жанр</button>
+</ul>
+################################################################################################################################

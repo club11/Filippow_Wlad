@@ -7,7 +7,7 @@ genre_form
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}<br>
-        <a href ='{% url "book_guide:genres" %}'><button>Назад к списку жанров</a></button>
-        <button type="submit">Внести изменения </button>
+        <a href ='{% url "book_guide:genres" %}'><button type="button" class="btn btn-sm btn-warning ; text-decoration: none">Назад к списку жанров</button></a>
+        <button type="submit" class="btn btn-sm btn-danger ; text-decoration: none">Внести изменения</button>
     </form>
 {% endblock body %}

@@ -3,6 +3,34 @@
     author_list
     {% endblock title %}
     {% block body %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Автор</th>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for author in author_list %}
+          <tr>
+            <th scope="row">{{ author.pk }}</th>
+            <td><a href='{% url "book_guide:author_detail" author.pk %}' style="text-decoration: none">{{ author }}</a></td>
+            <td><a href='{% url "book_guide:author_update" author.pk %}' style="text-decoration: none">Редактировать</a></td>
+            <td><a href='{% url "book_guide:author_delete" author.pk %}' style="text-decoration: none">Удалить</a></td>
+            {% endfor %}
+          </tr>
+      </table>
+    <a href='{% url "book_guide:book_references" %}'>
+        <button class="btn btn-sm btn-warning" text-decoration: none>Вернуться назад</button>
+    </a>     
+    <a href='{% url "book_guide:author_create" %}'>
+        <button class="btn btn-sm btn-warning" text-decoration: none>Добавить автора</button>
+    </a>   
+    {% endblock body %}
+
+################################################################################################################################
     <h1>Все авторы:</h1>
     <ul>
         {% for author in author_list %}
@@ -12,11 +40,9 @@
             </li>
         {% endfor %}
         <a href='{% url "book_guide:book_references" %}'>
-            <button>Вернуться назад</button>
-          </a>     
+            <button>Вернуться назад</button></a>     
         <a href='{% url "book_guide:author_create" %}'>
-            <button>Добавить автора</button>
-          </a>   
+            <button>Добавить автора</button></a>   
     </ul>
-    {% endblock body %}
+################################################################################################################################
 

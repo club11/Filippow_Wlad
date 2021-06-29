@@ -3,6 +3,37 @@
 line_list
 {% endblock title %}
 {% block body %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Серия</th>
+        <th scope="col">#</th>
+        <th scope="col">#</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for line in line_list %}
+      <tr>
+        <th scope="row">{{ line.pk }}</th>
+        <td><a href='{% url "book_guide:lines_data" line.pk %}' style="text-decoration: none">{{ line }}</a></td>
+        <td><a href='{% url "book_guide:line_update" line.pk %}' style="text-decoration: none">Редактировать</a></td>
+        <td><a href='{% url "book_guide:line_delete" line.pk %}' style="text-decoration: none">Удалить</a></td>
+        {% endfor %}
+      </tr>
+  </table>
+  <a href='{% url "book_guide:book_references" %}'>
+    <button class="btn btn-sm btn-warning" text-decoration: none>Вернуться назад</button>
+  </a>     
+<a href='{% url "book_guide:line_create" %}'>
+    <button class="btn btn-sm btn-warning" text-decoration: none>Добавить серию</button>
+  </a>   
+{% endblock body %}
+
+
+################################################################################################################################
+
 <body>
     <h1>Все серии:</h1>
     <ul>
@@ -17,8 +48,7 @@ line_list
         <a href='{% url "book_guide:line_create" %}'>
             <button>Добавить серию</button>
     </ul>
-{% endblock body %}
-
+    ################################################################################################################################
 
 
 

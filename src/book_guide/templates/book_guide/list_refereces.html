@@ -8,15 +8,15 @@ list_of_reference_books
      list-style-type: none; /* Убираем маркеры */
     }
 </style>
-    <h1>Список всех справочников:</h1>
-    <ul>
-        <li><a href='/book_guide/genre' class="btn btn-dark">Жанр</a></li>
-        <li><a href='/book_guide/author' class="btn btn-dark">Автор</a></li>
-        <li><a href='/book_guide/line' class="btn btn-dark">Серия</a></li>
-        <li><a href='/book_guide/publisher' class="btn btn-dark">Издатель</a></li>
-    </ul>
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+        Список всех справочников
+        <a href="/book_guide/genre" class="list-group-item list-group-item-action">Жанр</a>
+        <a href="/book_guide/author" class="list-group-item list-group-item-action">Автор</a>
+        <a href="/book_guide/line" class="list-group-item list-group-item-action">Серия</a>
+        <a href="/book_guide/publisher" class="list-group-item list-group-item-action">Издатель</a>
+    </div>
 {% endblock body %}
-
 
 
 
