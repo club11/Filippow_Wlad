@@ -3,7 +3,7 @@ from . import models
 
 # Register your models here.
 
-class Profile(admin.ModelAdmin):
+class ProfileAdmin(admin.ModelAdmin):
     list_display = [
         'pk',
         'user',
@@ -18,7 +18,7 @@ class Profile(admin.ModelAdmin):
     ]  
 
 
-admin.site.register(models.Profile)
+admin.site.register(models.Profile, ProfileAdmin)
 
 
 
