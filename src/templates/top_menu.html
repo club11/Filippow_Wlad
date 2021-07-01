@@ -1,4 +1,4 @@
-
+{% load my_tags %}
 <ul class="navbar-nav me-auto mb-2 mb-md-0">
     <li class="nav-item">
       <a class="nav-link" href="{% url 'book_guide:book_references' %}">Справочники</a>
@@ -14,6 +14,9 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'login:userlogin' %}">Войти в аккаунт</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">1$ = {% currency_rate %} BYN</a>
     </li>
 
 
