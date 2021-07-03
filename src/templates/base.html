@@ -66,6 +66,14 @@
       </header>
       <main class="flex-shrink-0">
         <div class="container">
+
+
+          <form action="{% url 'books_list:book_list' %}" method="GET">
+          <input type="text" name='q'>
+          <button type="submit">search</button>
+        </form>
+
+
     {% block body %}Defailt body{% endblock body %}
     </div>
     </main>
@@ -78,8 +86,7 @@
           <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
             <h5 class="text-uppercase">О нас</h5>
     
-            <p>
-  
+            <p> 
               <ul> 
                   <li>Время работы:</li>
                   <li>Понедельник – Пятница с 9:00 до 20:00</li>
@@ -87,9 +94,6 @@
                   <li>BookShop.com - хорошие книги для отличных людей </li>
                   <li>Интернет-магазин. Для передачи заказа в выбранный вами пункт самовывоза необходимо предварительно оформить заказ на сайте или по телефону.</li>
                   </ul>
-  
-  
-  
             </p>
           </div>
           <!--Grid column-->

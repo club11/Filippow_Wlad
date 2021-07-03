@@ -1,4 +1,4 @@
-
+{% load my_tags %}
 <ul class="navbar-nav me-auto mb-2 mb-md-0">
     <li class="nav-item">
       <a class="nav-link" href="{% url 'books_list:book_list_customer' %}">Товар</a>
@@ -13,7 +13,7 @@
       <a class="nav-link" href="{% url 'carts:cart_edit' %}">Корзина</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">1$ = {% currency_rate %} BYN</a>
+      <a class="nav-link disabled" href="#">1$ = {% currency_rate %} BYN</a>
     </li>
 
 </ul>

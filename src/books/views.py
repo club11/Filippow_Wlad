@@ -1,3 +1,4 @@
+from django.contrib import auth
 from django.db.models import fields
 from django.db.models.query import QuerySet
 from django.shortcuts import render
@@ -5,6 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
+from django.db.models import Q
 #from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from . import models
@@ -14,6 +16,18 @@ from . import models
 class BookListView(ListView):
     model = models.Book
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        q = self.request.GET.get('q')
+        if q:
+            #qs = qs.filter(Q(name__icontains =q) | Q(author__icontains=q))
+            qs = qs.filter( Q(name__icontains=q))
+        return qs
+
+    #фильтрация запроса shown
+    def get_context_data(self, **kwargs):
+        q = self.request.GET.get('q')
+        return super().get_context_data(**kwargs)
 
 class BookDetailView(DetailView):
     model = models.Book
@@ -111,6 +125,19 @@ class HomeListViewCustomer(ListView):
 class BookListCustomerView(ListView):
     model = models.Book
     template_name = 'books/book_list_customer.html'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        q = self.request.GET.get('q')
+        if q:
+            #qs = qs.filter(Q(name__icontains =q) | Q(author__icontains=q))
+            qs = qs.filter( Q(name__icontains=q))
+        return qs
+
+    #фильтрация запроса shown
+    def get_context_data(self, **kwargs):
+        q = self.request.GET.get('q')
+        return super().get_context_data(**kwargs)    
 
 class BookDetailCustomerView(DetailView):
     model = models.Book    
