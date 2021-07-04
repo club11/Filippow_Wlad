@@ -5,17 +5,12 @@ home_customer.html
 {% block body %}
 <h1 class="display-3" align="center">BOOK SHOP</h1>
 
-
 <div class="container">
   <div class="row">
     {% for last_added in home_customer %}
     <div class="col-sm">{{ book.pk }}</div>
     {% endfor %}    
   </div>
- 
-
-
-
     <div class="container">
       <div class="row" > <big><b>Последние добавленные книги:</b></big> </div>
       <div class="row"> 

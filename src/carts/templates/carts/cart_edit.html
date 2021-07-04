@@ -27,7 +27,7 @@ cart_edit
         </div>
       </td>
       <td>{{ good.unit_price}} </td>
-      <td><form action="{% url 'carts:delete_good_in_cart' good.pk %}" method="post">{% csrf_token %} <button type="submit" class="btn btn-sm btn-danger">Удалить</button></form></td>
+      <td><a href="{% url 'carts:delete_good_in_cart' good.pk %}" class="btn btn-sm btn-danger">Удалить</a></td>
     </tr>
     {% endfor %}
   </tbody>
@@ -37,9 +37,11 @@ cart_edit
     <td></td>
   </tr>
 </table>
+{% csrf_token %}
 <button type="submit" class="btn btn-warning" name="submit" value="save_cart">Сохранить</button>
 <button type="submit" class="btn btn-success" name="submit" value="create_order">Сохранить и заказать</button>
 </form>
 
 {% endblock body %}
 
+<td><form action="{% url 'carts:delete_good_in_cart' good.pk %}" method="post">{% csrf_token %} <button type="submit" class="btn btn-sm btn-danger">Удалить</button></form></td>

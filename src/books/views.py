@@ -126,6 +126,8 @@ class BookListCustomerView(ListView):
     model = models.Book
     template_name = 'books/book_list_customer.html'
 
+    paginate_by = 4
+
     def get_queryset(self):
         qs = super().get_queryset()
         q = self.request.GET.get('q')

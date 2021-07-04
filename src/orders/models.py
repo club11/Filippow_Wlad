@@ -18,7 +18,7 @@ class Order(models.Model):
     )  
 
     #tel = models.TextField(                
-    #    verbose_name='Tel',
+    #    verbose_name='tel',
     #)  
 
     created = models.DateTimeField(

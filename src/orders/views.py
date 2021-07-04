@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.edit import FormView
 from . import models, forms
-
+#from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from carts import models as carts_models
 
 from django.views.generic import CreateView, FormView, TemplateView
@@ -18,7 +19,9 @@ class CreateOrderView(FormView):
         if self.request.user.is_anonymous:
             return {}
         tel = self.request.user.profile.tel
-        return {'contact_info': 'contact info', "tel" : tel}
+        #return {'contact_info': "contact info", 'tel' : tel}
+        return {'contact_info': tel}
+
 
     def form_valid(self, form):
         cart_id = self.request.session.get('cart_id')
@@ -33,8 +36,13 @@ class CreateOrderView(FormView):
             cart = cart,
             contact_info = ci
         )  
-        self.request.session.delete('cart_id')
-        return super().form_valid(form)
+
+        del self.request.session['cart_id']
+        messages.add_message(self.request, messages.INFO, f'{str(self.request.user)}, Ваш заказ принят ')
+        #self.request.session.pop('cart_id')
+        #return super().form_valid(form)
+        return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)  

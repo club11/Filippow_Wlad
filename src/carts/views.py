@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls.base import reverse
 #from django.db import models
 from . import models
-from django.views.generic import UpdateView, DetailView, DeleteView
+from django.views.generic import UpdateView, DetailView, DeleteView, FormView, RedirectView
 from django.views import View
 from django.http import HttpResponseRedirect
 from books import models as books_models
@@ -17,6 +17,7 @@ class CartView(DetailView):
     def get_object(self, queryset=None):
         # get cart        
         cart_id = self.request.session.get('cart_id')
+        #del self.request.session['cart_id']
         cart, created = models.Cart.objects.get_or_create(    # id of the cart
             pk=cart_id,
             defaults={}
@@ -44,9 +45,14 @@ class CartView(DetailView):
         return cart
 
 
-class CartDeleteView(DeleteView):
+class CartDeleteView(RedirectView):
     model = models.BooksInCart
     success_url = reverse_lazy('carts:cart_edit')
+
+    def get_redirect_url(self, *args, **kwargs):
+        #obj_pk_todelete
+        self.model.objects.get(pk=self.kwargs.get('pk')).delete()
+        return self.success_url
 
 class CartUpdate(View):
     def post(self, request):
