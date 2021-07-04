@@ -24,18 +24,18 @@
             font-size: 3.5rem;
           }
         }
-
+        
 
           li {
             list-style-type: none; /* Убираем маркеры */
-          }   
+          }         
                 /* Custom page CSS
 -------------------------------------------------- */
         /* Not required for template or sticky footer method. */
 
         main > .container {
         padding: 60px 15px 0;
-        }
+        }    
     </style> 
 </head>
 <body class="d-flex flex-column h-100">
@@ -43,12 +43,23 @@
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
           <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'books_list:home_customer' %}">Book shop</a>
+            <a class="navbar-brand" href="{% url 'books_list:home' %}">Book shop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-              {% include './top_menu_customer.html' %}
+              {% include './top_menu.html' %}   
+  
+              <form class="d-flex" action="{% url 'books_list:book_list' %}" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" name='q'>
+                <button class="btn btn-outline-success" type="submit">Поиск</button>
+              </form>
+
+
+              {% if template.name == '/home.html' %}     
+              {% endif %}
+
+              
             </div>
           </div>
         </nav>
@@ -67,8 +78,7 @@
           <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
             <h5 class="text-uppercase">О нас</h5>
     
-            <p>
-  
+            <p> 
               <ul> 
                   <li>Время работы:</li>
                   <li>Понедельник – Пятница с 9:00 до 20:00</li>
@@ -76,9 +86,6 @@
                   <li>BookShop.com - хорошие книги для отличных людей </li>
                   <li>Интернет-магазин. Для передачи заказа в выбранный вами пункт самовывоза необходимо предварительно оформить заказ на сайте или по телефону.</li>
                   </ul>
-  
-  
-  
             </p>
           </div>
           <!--Grid column-->

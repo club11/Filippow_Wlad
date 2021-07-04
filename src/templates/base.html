@@ -35,13 +35,7 @@
 
         main > .container {
         padding: 60px 15px 0;
-        }
-
-
-
-
-
-        
+        }    
     </style> 
 </head>
 <body class="d-flex flex-column h-100">
@@ -54,26 +48,13 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-              {% include './top_menu.html' %}
-            
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
+              {% include './top_menu.html' %}   
             </div>
           </div>
         </nav>
       </header>
       <main class="flex-shrink-0">
         <div class="container">
-
-
-          <form action="{% url 'books_list:book_list' %}" method="GET">
-          <input type="text" name='q'>
-          <button type="submit">search</button>
-        </form>
-
-
     {% block body %}Defailt body{% endblock body %}
     </div>
     </main>

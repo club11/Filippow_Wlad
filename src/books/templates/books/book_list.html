@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_list.html" %}
 {% block title %}
 books_list
 {% endblock title %}
@@ -28,8 +28,6 @@ books_list
 <a href='{% url "books_list:book_create" %}'>
   <button type="button" class="btn btn-sm btn-warning" text-decoration: none;">Добавить книгу</button>
   {% endif %}  
-
-
 {% endblock body %}
 
 
@@ -59,4 +57,9 @@ books_list
 {% if perms.books.add_book %}
 <a href='{% url "books_list:book_create" %}'>
   <button>Добавить книгу</button>
-  {% endif %}  
+  {% endif %} 
+  
+  <form action="{% url 'books_list:book_list' %}" method="GET">
+    <input type="text" name='q'>
+    <button type="submit">search</button>
+  </form>

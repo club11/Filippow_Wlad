@@ -49,12 +49,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               {% include './top_menu_customer.html' %}
+              <form class="d-flex" action="{% url 'books_list:book_list_customer' %}" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" name='q'>
+                <button class="btn btn-outline-success" type="submit">Поиск</button>
+              </form>
             </div>
           </div>
         </nav>
       </header>
       <main class="flex-shrink-0">
         <div class="container">
+
     {% block body %}Defailt body{% endblock body %}
     </div>
     </main>
