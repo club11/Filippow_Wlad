@@ -14,6 +14,12 @@ class CreateOrderView(FormView):
     template_name = 'orders/create_order.html'
     success_url = reverse_lazy('orders:success_order')
 
+    def get_initial(self):         #здесь подкидывать данные из profile тел. при подтверждении заказа
+        if self.request.user.is_anonymous:
+            return {}
+        tel = self.request.user.profile.tel
+        return {'contact_info': 'contact info', "tel" : tel}
+
     def form_valid(self, form):
         cart_id = self.request.session.get('cart_id')
         cart, created = carts_models.Cart.objects.get_or_create(    # id of the cart

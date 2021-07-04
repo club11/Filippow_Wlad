@@ -16,6 +16,11 @@ class Order(models.Model):
     contact_info = models.TextField(                ### 02:02:00
         verbose_name='Contact_info',
     )  
+
+    #tel = models.TextField(                
+    #    verbose_name='Tel',
+    #)  
+
     created = models.DateTimeField(
         verbose_name='created',
         auto_now=False,

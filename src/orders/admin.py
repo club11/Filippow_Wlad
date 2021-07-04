@@ -6,7 +6,8 @@ from . import models
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
         'pk',
-        #status
+        #status,
+        #'tel'
         'contact_info',
         'created',
         'updated',
