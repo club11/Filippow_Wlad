@@ -9,7 +9,7 @@ from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordCha
 from django.contrib.auth.models import User
 #from .models import UserProfile
 #from .forms import UserProfileForm
-from django.views.generic import CreateView, DetailView, FormView
+from django.views.generic import  FormView, UpdateView
 from . import models, forms
 from django.urls import reverse_lazy
 
@@ -23,8 +23,12 @@ User = get_user_model()
 
 
 #class MyLoginPasswordChangeView(PasswordChangeView):
-#    template_name = 'users/passwordchange.html'
-#    form_class = forms.PasswordChangeForm
+#   template_name = 'users/psd_change.html'
+#   form_class = forms.PasswordChangeForm
+#   success_url = reverse_lazy('login:login')
+
+
+
 
 
 class Registerview(FormView):
@@ -48,6 +52,17 @@ class Registerview(FormView):
 
 
 
+#class ProfileUpdateView(UpdateView):
+#    model = models.Profile
+#    fields = (
+#        '',
+#        '',
+#        '',
+#        '',
+#        '',
+#        '',
+#        '',
+#    )
 
 
 

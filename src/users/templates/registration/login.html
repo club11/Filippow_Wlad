@@ -70,15 +70,11 @@
 								<label for="lg_password" class="sr-only">{{ form.password.label_tag }}</label><br>
 								<td>{{ form.password }}</td>
 							</div>
-							<div class="form-group login-group-checkbox">
-								<input type="checkbox" id="lg_remember" name="lg_remember">
-								<label for="lg_remember">запомнить</label>
-							</div>
 							<div class="col-12">
 							<button class="btn btn-primary; btn-secondary" type="submit"> <input type="hidden" name="next" value="{{ next }}">Войти</button>
 						  </div>
 				<div class="etc-login-form">
-					<p> </p>
+					<p> <a href="#">Изменить пароль</a></p>
 					<p> <a href="{% url 'users:register' %}">Создать новый аккаунт</a></p>
 				</div>
 			</form>
@@ -91,7 +87,7 @@
 {% endblock %}
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+<p> <a href="{% url 'users:psd_change' %}">Изменить пароль</a></p>
 	
 	<!-- LOGIN FORM -->
 	<div class="text-center " style="padding:50px 0; ">

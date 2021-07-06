@@ -7,13 +7,16 @@ from django.contrib.auth import views as auth_views
 app_name = 'users'
 
 urlpatterns = [
-    #path('login/', users_viesws.MyLoginView.as_view(), name='login'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logged_out/', auth_views.LogoutView.as_view(), name='logged_out'),
+    path('logged_out/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', users_viesws.Registerview.as_view(), name='register'),
-    
-
-
-    #path('passwordchange/', users_viesws.MyLoginPasswordChangeView.as_view(), name='passwrdchnge'),
-    #path('userprofile/', users_viesws.UserProfileDetailView.as_view(), name='userprofile'),
+    #path('pass_change/', auth_views.PasswordChangeView.as_view(template_name='pass_change.html'), name='pass_change'),
 ]
+
+template_name='users/psd_change.html'
+
+
+    #path('psd_change/', users_viesws.MyLoginPasswordChangeView.as_view(template_name = 'users/psd_change.html'), name='psd_change'),
+    #path('psd_change-done/', users_viesws.MyLoginPasswordChangeDoneView.as_view(), name='psd_change-done'),
+    #path('psd_change/', users_viesws.MyLoginPasswordChangeView.as_view(), name='psd_change'),
+    #path('userprofile/', users_viesws.UserProfileDetailView.as_view(), name='userprofile'),

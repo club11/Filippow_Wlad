@@ -22,7 +22,8 @@ from users import views as users_viesws
 from carts import views as carts_viesws
 from django.conf import settings
 
-#from django.contrib.auth import views as auth_views
+
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
