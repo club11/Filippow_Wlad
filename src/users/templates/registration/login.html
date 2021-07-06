@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+<style>
+	a:hover {
+	text-decoration: none;
+	}
+	.login-form-1 {
+		max-width: 300px;
+		border-radius: 0px;
+		display: inline-block;
+	}
+	
+	  .main-login-form {
+	  position: relative;
+	}
+	.login-form-1 .form-control {
+	  border: 0;
+	  box-shadow: 0 0 0;
+	  border-radius: 1;
+	  background: transparent;
+	  padding: 7px 0;
+	  font-weight: bold;
+	  height:auto;
+	}
+	.login-form-1 .form-control::-webkit-input-placeholder {
+	}
+	.login-form-1 .login-button:hover {
+	  color: #4b4b4b;
+	  transform: rotate(450deg);
+	}
+	.login-form-1 .form-group {
+	  margin-bottom: 0;
+	  padding-right: 20px;
+	  position: relative;
+	}
+	</style> 
+
+
+{% block body %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+	<!-- LOGIN FORM -->
+	<div class="text-center " style="padding:50px 0; ">
+		<div class="logo">Пожалуйста, введите свой логин и пароль</div>
+		<!-- Main Form -->
+		<div class="login-form-1">
+			<form method="post" action="{% url 'login:login' %}">
+				{% csrf_token %}
+				<div class="login-form-main-message"></div>
+				<div class="main-login-form">
+					<div class="login-group">
+						<div class="login-group">
+							<div class="form-group">
+								<label for="lg_username" class="sr-only">{{ form.username.label_tag }}</label><br>
+								<td class="form-control" >{{ form.username }}</td>
+							</div>
+							<div class="form-group">
+								<label for="lg_password" class="sr-only">{{ form.password.label_tag }}</label><br>
+								<td>{{ form.password }}</td>
+							</div>
+							<div class="form-group login-group-checkbox">
+								<input type="checkbox" id="lg_remember" name="lg_remember">
+								<label for="lg_remember">запомнить</label>
+							</div>
+							<div class="col-12">
+							<button class="btn btn-primary; btn-secondary" type="submit"> <input type="hidden" name="next" value="{{ next }}">Войти</button>
+						  </div>
+				<div class="etc-login-form">
+					<p> </p>
+					<p> <a href="{% url 'users:register' %}">Создать новый аккаунт</a></p>
+				</div>
+			</form>
+		</div>
+		<!-- end:Main Form -->
+	</div>
+
+
+
+{% endblock %}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	
+	<!-- LOGIN FORM -->
+	<div class="text-center " style="padding:50px 0; ">
+		<div class="logo">Пожалуйста, введите свой логин и пароль</div>
+		<!-- Main Form -->
+		<div class="login-form-1">
+			<form id="login-form" class="text-left">
+				<div class="login-form-main-message"></div>
+				<div class="main-login-form">
+					<div class="login-group">
+						<div class="form-group">
+							<label for="lg_username" class="sr-only">Логин</label>
+							<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="username">
+						</div>
+						<div class="form-group">
+							<label for="lg_password" class="sr-only">Пароль</label>
+							<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password">
+						</div>
+						<div class="form-group login-group-checkbox">
+							<input type="checkbox" id="lg_remember" name="lg_remember">
+							<label for="lg_remember">запомнить</label>
+						</div>
+						<div class="col-12">
+							<button class="btn btn-primary; btn-secondary" type="submit">Войти</button>
+						  </div>
+				<div class="etc-login-form">
+					<p> </p>
+					<p> <a href="{% url 'users:register' %}">Создать новый аккаунт</a></p>
+				</div>
+			</form>
+		</div>
+		<!-- end:Main Form -->
+	</div>
+
+
+
+
+
+
+	{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login:login' %}">
+	{% csrf_token %}
+	<table>
+	<tr>
+		<td>{{ form.username.label_tag }}</td>
+		<td>{{ form.username }}</td>
+	</tr>
+	<tr>
+		<td>{{ form.password.label_tag }}</td>
+		<td>{{ form.password }}</td>
+	</tr>
+	</table>
+	
+	<input type="submit" value="login">
+	<input type="hidden" name="next" value="{{ next }}">
+	</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="#">Забыли свой пароль?</a></p>
+
+
+
+
+
+

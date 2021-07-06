@@ -15,8 +15,8 @@ from django.urls import reverse_lazy
 
 User = get_user_model()
 
-class MyLoginView(LoginView):
-    template_name = 'users/userlogin.html'
+#class MyLoginView(LoginView):
+#    template_name = 'users/login.html'
     #redirect_field_name:
     #authentication_form:
     #redirect_authenticated_user: 
@@ -28,7 +28,7 @@ class MyLoginView(LoginView):
 
 
 class Registerview(FormView):
-    template_name = 'users/register.html'
+    template_name = 'registration/register.html'
     form_class = forms.RegisterForm
     success_url = reverse_lazy('books_list:book_list')
     
