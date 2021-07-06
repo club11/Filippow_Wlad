@@ -23,3 +23,8 @@ class Profile(models.Model):
     home_adress = models.CharField(verbose_name="Домашний дрес", max_length=50, blank=True)
 # need extention with  country city index adress1 adress2
     another_info = models.CharField(verbose_name="Дополнительная информация", max_length=100, blank=True)
+
+    country = models.CharField(max_length=20, verbose_name='страна')
+    city = models.CharField(max_length=20, verbose_name='город')
+    home_index = models.IntegerField(verbose_name='индекс')
+    

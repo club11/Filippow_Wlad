@@ -13,6 +13,9 @@ class ProfileAdmin(admin.ModelAdmin):
         'email',
         'user_group',
         'home_adress',
+        'country',
+        'city',
+        'home_index',
         # need extention with  country city index adress1 adress2
         'another_info',  
     ]  

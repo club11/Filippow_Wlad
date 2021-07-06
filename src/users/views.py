@@ -41,11 +41,21 @@ class Registerview(FormView):
         #1 зарегать сперва в стандартной джанговской модели
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
-        tel = form.cleaned_data.get('tel') 
+        tel = form.cleaned_data.get('tel')
+
+        home_index = form.cleaned_data.get('home_index')
+        email = form.cleaned_data.get('email')
+        first_name = form.cleaned_data.get('first_name')
+        lastname = form.cleaned_data.get('lastname')
+        country = form.cleaned_data.get('country')
+        city = form.cleaned_data.get('city')
+        home_adress = form.cleaned_data.get('home_adress')
+        another_info = form.cleaned_data.get('another_info')
+
         #2 данные для готового пользователя
         user = User.objects.create_user(username=username, password=password)         #зарегать сперва в стандартной джанговской модели     
         # 2 досоздаем профиль под готового пользователя
-        profile = models.Profile.objects.create(user=user, tel=tel)                   # 2 досоздаем профиль под готового пользователя
+        profile = models.Profile.objects.create(user=user, tel=tel, home_index=home_index, email=email, first_name=first_name, last_name=lastname, country=country, city=city, home_adress=home_adress, another_info=another_info)       # 2 досоздаем профиль под готового пользователя
         # 3 логиним пользователя
         login(self.request, user)
         return super().form_valid(form)

@@ -38,6 +38,17 @@ class RegisterForm(forms.Form):
         max_length=254,
         widget=forms.EmailInput(attrs={'autocomplete': 'email'})
     )
+    first_name = forms.CharField(max_length='25', label='имя')
+    lastname = forms.CharField(max_length='25', label='фамилия')
+    country = forms.CharField(max_length='20', label='страна')
+    city = forms.CharField(max_length='20', label='город')
+    home_index = forms.IntegerField(label='индекс')
+    home_adress = forms.CharField(max_length='50', label='адрес')
+    another_info = forms.CharField(max_length='100', label='дополнительная информация')
+
+
+
+
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
