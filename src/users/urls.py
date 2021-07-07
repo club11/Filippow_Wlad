@@ -11,6 +11,8 @@ urlpatterns = [
     path('logged_out/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', users_viesws.Registerview.as_view(), name='register'),
     #path('pass_change/', auth_views.PasswordChangeView.as_view(template_name='pass_change.html'), name='pass_change'),
+
+    path('profile/', users_viesws.ProfileView.as_view(), name='profile'),
 ]
 
 template_name='users/psd_change.html'

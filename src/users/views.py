@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model, login, models, password_validation
+from django.contrib.auth import authenticate, get_user_model, login, models, password_validation
 from django.db.models.fields import related
 from django.forms import forms
 
@@ -9,7 +9,8 @@ from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordCha
 from django.contrib.auth.models import User
 #from .models import UserProfile
 #from .forms import UserProfileForm
-from django.views.generic import  FormView, UpdateView
+from django.views.generic import  FormView, DetailView
+
 from . import models, forms
 from django.urls import reverse_lazy
 
@@ -62,22 +63,19 @@ class Registerview(FormView):
 
 
 
-#class ProfileUpdateView(UpdateView):
-#    model = models.Profile
-#    fields = (
-#        '',
-#        '',
-#        '',
-#        '',
-#        '',
-#        '',
-#        '',
-#    )
-
-
-
-
-
+class ProfileView(DetailView):
+    model = models.Profile
+    template_name = 'users/userprofile.html'
+    def get_object(self, queryset=None):
+        user_name = self.request.user.username
+        user_idd = self.request.user.pk
+        user_profile = models.Profile.objects.get(user_id=user_idd) # Здесь работает связь из user модели в кастомную profile (user id = 23 в user_profile_id = 11)
+        print(user_name)
+        print(user_idd)
+        print(user_profile)
+        print(user_profile.pk)
+        print(user_profile.email)
+        return user_profile
 
 
 

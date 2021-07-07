@@ -1,7 +1,14 @@
-{% extends "base_customer.html" %}
+{% extends "base.html" %}
 
 {% block body %}
-{% block body %}
+
+{{object.first_name}}
+{{object.tel}}
+{{object.country}}
+
+
+{% endblock %}
+
 <div class="content">
     <h1>{{user.first_name}} {{user.last_name}}</h1>
     <p>            
@@ -10,6 +17,3 @@
         <br/>Profile Image
     </p>
 </div>
-
-
-{% endblock %}
