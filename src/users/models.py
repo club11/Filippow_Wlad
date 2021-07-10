@@ -19,7 +19,7 @@ class Profile(models.Model):
     first_name = models.CharField('first name', max_length=150, blank=True,)
     last_name = models.CharField('last name', max_length=150, blank=True,)
     email = models.EmailField('email address', blank=True,) 
-    user_group = models.CharField(verbose_name="Группа", max_length=25, default='none')
+    group = models.CharField(verbose_name="Группа", max_length=25, default='none')
     home_adress = models.CharField(verbose_name="Домашний дрес", max_length=50, blank=True)
 # need extention with  country city index adress1 adress2
     another_info = models.CharField(verbose_name="Дополнительная информация", max_length=100, blank=True)

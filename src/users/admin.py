@@ -11,7 +11,7 @@ class ProfileAdmin(admin.ModelAdmin):
         'first_name',
         'last_name',
         'email',
-        'user_group',
+        'group',
         'home_adress',
         'country',
         'city',

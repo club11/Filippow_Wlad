@@ -2,7 +2,7 @@ from django import template
 import requests
 register = template.Library()
 
-USD_ENDPOINT = 'https://www.nbrb.by/api/exrates/rates/145'
+USD_ENDPOINT = 'https://www.nbrb.by/api/exrates/rates/431'
 
 @register.simple_tag
 def currency_rate():

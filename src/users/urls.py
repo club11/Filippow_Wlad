@@ -12,7 +12,10 @@ urlpatterns = [
     path('register/', users_viesws.Registerview.as_view(), name='register'),
     #path('pass_change/', auth_views.PasswordChangeView.as_view(template_name='pass_change.html'), name='pass_change'),
 
-    path('profile/', users_viesws.ProfileView.as_view(), name='profile'),
+    #path('profile/', users_viesws.ProfileView.as_view(), name='profile'),
+
+    path('profile_change/', users_viesws.ProfileView.as_view(), name='profile_change'),
+    
 ]
 
 template_name='users/psd_change.html'

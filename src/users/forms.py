@@ -9,6 +9,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 #from django.contrib.auth.validators import UnicodeUsernameValidator
 
+from . models import Profile
+
 from django.db import models
 from django.core.mail import send_mail
 
@@ -45,10 +47,6 @@ class RegisterForm(forms.Form):
     home_index = forms.IntegerField(label='индекс')
     home_adress = forms.CharField(max_length='50', label='адрес')
     another_info = forms.CharField(max_length='100', label='дополнительная информация')
-
-
-
-
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -87,3 +85,13 @@ class RegisterForm(forms.Form):
 
 
 
+class RegisterUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ['user','tel', 'email', 'first_name', 'last_name', 'country', 'city', 'home_index', 'home_adress', 'another_info']
+
+        def __init__(self, *args, **kwargs):
+            super(RegisterUpdateForm, self).__init__(*args, **kwargs)
+            self.fields['user'].queryset = Profile.objects.exclude(id__in=Profile.objects.all().values_list('user_id'))
+            print(self.fields['user'].queryset)
