@@ -1,7 +1,7 @@
 from django.db import models
 
 from carts import models as carts_models
-
+from django.urls import reverse, reverse_lazy
 # Create your models here.
 
 class Order(models.Model):
@@ -11,16 +11,17 @@ class Order(models.Model):
         verbose_name='Order'
     )
 
-    #status                                         ##### статус заказа 02:02:44
+    order_status= models.ForeignKey(
+        'OrderStatus', 
+        on_delete=models.PROTECT,
+        verbose_name='Статус',
+        related_name='status',
+        default=1
+    )                                        ##### статус заказа 02:02:44
 
     contact_info = models.TextField(                ### 02:02:00
         verbose_name='Contact_info',
-    )  
-
-    #tel = models.TextField(                
-    #    verbose_name='tel',
-    #)  
-
+    )   
     created = models.DateTimeField(
         verbose_name='created',
         auto_now=False,
@@ -31,3 +32,17 @@ class Order(models.Model):
         auto_now=True,
         auto_now_add=False
     )
+
+
+class OrderStatus(models.Model):
+    name = models.CharField(
+        verbose_name='Статус заказа',
+        max_length=20,
+        blank=True
+    )
+
+    def __str__(self):
+        return self.name
+
+    #def get_absolute_url(self):
+    #    return reverse('book_guide:lines_data', args=[self.pk])    

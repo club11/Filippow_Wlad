@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% block title %}
-genre_list
+order_list
 {% endblock title %}
 {% block body %}
- 
 
 <table class="table">
     <thead>
@@ -11,27 +10,31 @@ genre_list
         <th scope="col">#</th>
         <th scope="col">Контактные данные</th>
         <th scope="col">Дата создания заказа</th>
-        <th scope="col">Дата обновления заказа</th>
-        <th scope="col">#</th>
-        <th scope="col">#</th>
+        <th scope="col">Дата изменения заказа</th>
+        <th scope="col">Статус заказа</th>
+        <th scope="col">Редактировать</th>
+        <th scope="col">Удалить</th>
       </tr>
     </thead>
     <tbody>
         {% for order in order_list %}
       <tr>
-        <th scope="row">{{ order.pk }}</th>
+        <th scope="row">Заказ № {{ order.pk }}</th>
         <td><a href='#' style="text-decoration: none">{{ order.contact_info }}</a></td>
         <td><a href='#' style="text-decoration: none">{{ order.created }}</a></td>
         <td><a href='#' style="text-decoration: none">{{ order.updated }}</a></td>
-        <td><a href='#' style="text-decoration: none">Редактировать</a></td>
-        <td><a href='#' style="text-decoration: none">Удалить</a></td>
+        <td><a href='#' style="text-decoration: none">{{ order.order_status }}</a></td>
+        <td><a href='{% url "orders:order_update" order.pk %}' style="text-decoration: none"><button class="btn btn-sm btn-warning" text-decoration: none>Редактировать</button></a></td>
+        <td><a href='{% url "orders:order_delete" order.pk %}' style="text-decoration: none"><button class="btn btn-sm btn-warning" text-decoration: none>Удалить</button></a></td>
         {% endfor %}
       </tr>
     </tbody>
   </table>
 {% endblock body %}
 
-
-<td><a href='{% url "book_guide:genre_data" genre.pk %}' style="text-decoration: none">{{ genre }}</a></td>
-<td><a href='{% url "book_guide:genre_update" genre.pk %}' style="text-decoration: none">Редактировать</a></td>
-<td><a href='{% url "book_guide:genre_delete" genre.pk %}' style="text-decoration: none">Удалить</a></td>
+<a href='{% url "book_guide:book_references" %}'>
+    <button class="btn btn-sm btn-warning" text-decoration: none>Вернуться назад</button>
+  </a>     
+<a href='{% url "book_guide:genre_create" %}'>
+    <button class="btn btn-sm btn-warning" text-decoration: none>Добавить жанр</button>
+  </a>   

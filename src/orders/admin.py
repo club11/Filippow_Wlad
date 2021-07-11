@@ -6,11 +6,20 @@ from . import models
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
         'pk',
-        #status,
+        'order_status',
         #'tel'
         'contact_info',
         'created',
         'updated',
+    ]  
+
+
+class OrderStatusAdmin(admin.ModelAdmin):
+    list_display = [
+        'pk',
+        'name'
     ]    
+
     
 admin.site.register(models.Order, OrderAdmin)  
+admin.site.register(models.OrderStatus, OrderStatusAdmin)

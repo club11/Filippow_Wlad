@@ -6,7 +6,7 @@ from . import models, forms
 from django.contrib import messages
 from carts import models as carts_models
 
-from django.views.generic import CreateView, FormView, TemplateView, UpdateView, DetailView, ListView
+from django.views.generic import CreateView, FormView, TemplateView, UpdateView, DetailView, ListView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
@@ -77,10 +77,17 @@ class OrderListView(ListView):
         #print(orders)
         return orders 
 
+class OrderDeleteView(DeleteView):
+    model = models.Order
+    success_url = reverse_lazy('orders:order_list')
 
 
-
-
+class OrderUpdateView(UpdateView):
+    model = models.Order
+    fields = (
+        'order_status',
+    )
+    success_url = reverse_lazy('orders:order_list')
 
 #class OrderDetailView(DetailView):
 #    model = models.Order   
