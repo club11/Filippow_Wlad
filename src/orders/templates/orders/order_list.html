@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+genre_list
+{% endblock title %}
+{% block body %}
+ 
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Контактные данные</th>
+        <th scope="col">Дата создания заказа</th>
+        <th scope="col">Дата обновления заказа</th>
+        <th scope="col">#</th>
+        <th scope="col">#</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for order in order_list %}
+      <tr>
+        <th scope="row">{{ order.pk }}</th>
+        <td><a href='#' style="text-decoration: none">{{ order.contact_info }}</a></td>
+        <td><a href='#' style="text-decoration: none">{{ order.created }}</a></td>
+        <td><a href='#' style="text-decoration: none">{{ order.updated }}</a></td>
+        <td><a href='#' style="text-decoration: none">Редактировать</a></td>
+        <td><a href='#' style="text-decoration: none">Удалить</a></td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+{% endblock body %}
+
+
+<td><a href='{% url "book_guide:genre_data" genre.pk %}' style="text-decoration: none">{{ genre }}</a></td>
+<td><a href='{% url "book_guide:genre_update" genre.pk %}' style="text-decoration: none">Редактировать</a></td>
+<td><a href='{% url "book_guide:genre_delete" genre.pk %}' style="text-decoration: none">Удалить</a></td>

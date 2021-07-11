@@ -22,6 +22,7 @@ genre_list
         <td><a href='{% url "book_guide:genre_delete" genre.pk %}' style="text-decoration: none">Удалить</a></td>
         {% endfor %}
       </tr>
+    </tbody>
   </table>
   <a href='{% url "book_guide:book_references" %}'>
     <button class="btn btn-sm btn-warning" text-decoration: none>Вернуться назад</button>

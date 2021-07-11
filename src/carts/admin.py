@@ -6,6 +6,9 @@ from . import models
 class CartAdmin(admin.ModelAdmin):
     list_display = [
         'pk',
+        'customer',
+        'order_date',
+        'total_price',
     ]
 
 class BooksInCartAdmin(admin.ModelAdmin):

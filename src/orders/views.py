@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from django.views.generic.edit import FormView
+from django.views.generic.list import ListView
 from . import models, forms
 #from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from carts import models as carts_models
 
-from django.views.generic import CreateView, FormView, TemplateView
+from django.views.generic import CreateView, FormView, TemplateView, UpdateView, DetailView, ListView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+
+#from project_shop.src import orders
 # Create your views here.
 
 class CreateOrderView(FormView):
@@ -57,3 +60,27 @@ class CreateOrderView(FormView):
 
 class SuccessOrderView(TemplateView):
     template_name = 'orders/success_order.html'
+
+
+class OrderListView(ListView):
+    model = models.Order
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)  
+        print (context)
+
+
+        return super().get_context_data(**kwargs)
+
+    def get_queryset(self):
+        orders = super().get_queryset()
+        #print(orders)
+        return orders 
+
+
+
+
+
+
+#class OrderDetailView(DetailView):
+#    model = models.Order   

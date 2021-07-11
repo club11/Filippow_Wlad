@@ -17,11 +17,23 @@ class CartView(DetailView):
     def get_object(self, queryset=None):
         # get cart        
         cart_id = self.request.session.get('cart_id')
+        #get customer
+        customer = self.request.user
+        print(customer)
         #del self.request.session['cart_id']
-        cart, created = models.Cart.objects.get_or_create(    # id of the cart
-            pk=cart_id,
-            defaults={}
-        )
+        if customer.is_anonymous:
+            cart, created = models.Cart.objects.get_or_create(    # id of the cart
+                pk=cart_id,
+                defaults={
+                }
+            )
+        if customer.is_authenticated:        
+            cart, created = models.Cart.objects.get_or_create(    # id of the cart
+                pk=cart_id,
+                defaults={
+                    'customer':customer
+                }
+            )
         if created:
             self.request.session['cart_id'] = cart.pk
         #get book_in_cart
@@ -80,7 +92,6 @@ class CartUpdate(View):
             return HttpResponseRedirect(reverse_lazy('orders:create_order'))
         else:
             return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
-
 
 
 
