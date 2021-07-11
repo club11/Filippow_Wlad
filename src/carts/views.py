@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls.base import reverse
 #from django.db import models
 from . import models
-from django.views.generic import UpdateView, DetailView, DeleteView, FormView, RedirectView
+from django.views.generic import UpdateView, DetailView, DeleteView, FormView, RedirectView, ListView
 from django.views import View
 from django.http import HttpResponseRedirect
 from books import models as books_models
@@ -94,4 +94,17 @@ class CartUpdate(View):
             return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
 
 
+class CartorderView(ListView):
+    model = models.BooksInCart
+    template_name = 'carts/booksincart_list.html'
+
+
+    def get_context_data(self, **kwargs): 
+        context = super().get_context_data(**kwargs) 
+        print(context)
+        #in_prerev = models.Book.objects.reverse()           #in pre- reverse
+        #bestsellers = in_prerev.order_by('quantity_on_hand')[:4]
+
+        #context['bestsellers'] = bestsellers
+        return context
 

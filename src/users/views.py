@@ -17,20 +17,11 @@ from django.urls import reverse_lazy
 
 User = get_user_model()
 
-#class MyLoginView(LoginView):
-#    template_name = 'users/login.html'
-    #redirect_field_name:
-    #authentication_form:
-    #redirect_authenticated_user: 
-
 
 #class MyLoginPasswordChangeView(PasswordChangeView):
 #   template_name = 'users/psd_change.html'
 #   form_class = forms.PasswordChangeForm
 #   success_url = reverse_lazy('login:login')
-
-
-
 
 
 class Registerview(FormView):

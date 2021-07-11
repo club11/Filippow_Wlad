@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+booksincart_list
+{% endblock title %}
+{% block body %}
+
+
+
+{% for cart in  booksincart_list %}
+<ul>
+    <li>{{ cart.pk }} {{ cart.book }}  {{cart.quantity}}  {{ cart.total_price}}</li>
+</ul>
+{% endfor %}
+
+{% endblock body %}

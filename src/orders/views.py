@@ -68,8 +68,6 @@ class OrderListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)  
         print (context)
-
-
         return super().get_context_data(**kwargs)
 
     def get_queryset(self):
@@ -89,5 +87,5 @@ class OrderUpdateView(UpdateView):
     )
     success_url = reverse_lazy('orders:order_list')
 
-#class OrderDetailView(DetailView):
-#    model = models.Order   
+ 
+

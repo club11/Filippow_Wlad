@@ -8,6 +8,7 @@ order_list
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Заказ</th>
         <th scope="col">Контактные данные</th>
         <th scope="col">Дата создания заказа</th>
         <th scope="col">Дата изменения заказа</th>
@@ -20,10 +21,11 @@ order_list
         {% for order in order_list %}
       <tr>
         <th scope="row">Заказ № {{ order.pk }}</th>
+        <td><a href='{% url "carts:booksincart_list"  %}' style="text-decoration: none">{{ order.cart.pk }}</a></td>
         <td><a href='#' style="text-decoration: none">{{ order.contact_info }}</a></td>
-        <td><a href='#' style="text-decoration: none">{{ order.created }}</a></td>
-        <td><a href='#' style="text-decoration: none">{{ order.updated }}</a></td>
-        <td><a href='#' style="text-decoration: none">{{ order.order_status }}</a></td>
+        <td>{{ order.created }}</td>
+        <td>{{ order.updated }}</td>
+        <td>{{ order.order_status }}</td>
         <td><a href='{% url "orders:order_update" order.pk %}' style="text-decoration: none"><button class="btn btn-sm btn-warning" text-decoration: none>Редактировать</button></a></td>
         <td><a href='{% url "orders:order_delete" order.pk %}' style="text-decoration: none"><button class="btn btn-sm btn-warning" text-decoration: none>Удалить</button></a></td>
         {% endfor %}
@@ -32,9 +34,12 @@ order_list
   </table>
 {% endblock body %}
 
-<a href='{% url "book_guide:book_references" %}'>
-    <button class="btn btn-sm btn-warning" text-decoration: none>Вернуться назад</button>
-  </a>     
-<a href='{% url "book_guide:genre_create" %}'>
-    <button class="btn btn-sm btn-warning" text-decoration: none>Добавить жанр</button>
-  </a>   
+'{% url "carts:booksincart_list" order.pk %}'
+
+
+
+
+
+
+<td><a href='{% url "carts:booksincart_detail" order.cart.pk   %}' style="text-decoration: none">{{ order.cart.pk }}</a></td>
+<td><a href='{% url "carts:booksincart_list" order.cart.pk %}' style="text-decoration: none">{{ order.cart }}</a></td>
