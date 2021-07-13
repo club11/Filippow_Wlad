@@ -16,6 +16,8 @@ urlpatterns = [
 
     path('profile_change/', users_viesws.ProfileView.as_view(), name='profile_change'),
     
+    path('customer_profile_change/<int:pk>/', users_viesws.CustomerProfileView.as_view(), name='customer_profile_change'),
+    
 ]
 
 template_name='users/psd_change.html'

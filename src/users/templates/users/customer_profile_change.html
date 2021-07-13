@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+profile_detail
+{% block body %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+<b>Логин:</b> <b style="font-size: 25px">{{object.user}}</b>
+<form method="post">{% csrf_token %}
+  <table>
+    <thead></thead>
+    <tbody>
+  {% for field in form %}
+  <tr>
+    <td><b>{{ field.label }}</b></td>
+    <td>
+      {{ field }}
+    </td>
+  </tr>
+
+  {% endfor %}
+    </tbody>
+</table>
+  <button type="submit" class="btn btn-sm btn-warning">Внести изменения</button>
+</form>
+
+{% endblock %}

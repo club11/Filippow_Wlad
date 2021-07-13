@@ -140,15 +140,44 @@ class ProfileView(UpdateView):
         user_profile=models.Profile.objects.get(user=self.request.user)
         return user_profile
 
-    #def form_valid(self, form):
-    #    form = forms.RegisterForm
-    #    print('23')
-    #    pk = self.request.user.pk
-    #    print(pk)
-    #    user = User.objects.get(pk=pk)
-    #    print(user)
-    #    first_name = form.cleaned_data.get('first_name')
-    #    print(first_name)
-    #
-    #    return HttpResponseRedirect(self.get_success_url())
+class CustomerProfileView(UpdateView):
+    model = models.Profile
+    template_name = 'users/customer_profile_change.html'
+    fields = (                                      
+        'group',
+        'another_info',
+        'country',
+        'city',
+        'home_adress',
+        'home_index',
+        )
+    success_url = reverse_lazy('orders:order_list')
+
+    def get_object(self, queryset=None):
+            if queryset is None:
+                queryset = self.get_queryset()
+            pk = self.kwargs.get(self.pk_url_kwarg)
+            slug = self.kwargs.get(self.slug_url_kwarg)
+            if pk is not None:
+                queryset = queryset.filter(pk=pk)
+            if slug is not None and (pk is None or self.query_pk_and_slug):
+                slug_field = self.get_slug_field()
+                queryset = queryset.filter(**{slug_field: slug})
+            obj = queryset.get()
+            if pk is None and slug is None:
+                raise AttributeError(
+            "Generic detail view %s must be called with either an object "
+            "pk or a slug in the URLconf." % self.__class__.__name__
+            )
+            try:
+                obj = queryset.get()
+            except queryset.model.DoesNotExist:
+                raise Http404(_("No %(verbose_name)s found matching the query") %
+                      {'verbose_name': queryset.model._meta.verbose_name})
+            print(obj)
+            print(obj.pk)           
+            return obj
+
+        #    user_profile = models.Profile.objects.get(pk=int(object_id))
+        #    return user_profile
 

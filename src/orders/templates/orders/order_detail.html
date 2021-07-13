@@ -56,14 +56,18 @@ order_list
         <td>{{ object.cart.customer.profile.tel }}</td>
         <td>{{ object.created }}</td>
         <td>{{ object.updated }}</td>
-        <td><a href="{% url 'login:profile_change' %}" style="text-decoration: none"><button class="btn btn-sm btn-light"" text-decoration: none><b>{{ object.cart.customer }}</b></button></a></td>
+        {%if object.cart.customer.profile.pk %}
+        <td><a href="{% url 'login:customer_profile_change' object.cart.customer.profile.pk%}" style="text-decoration: none"><button class="btn btn-sm btn-light"" text-decoration: none><b>{{ object.cart.customer }}</b></button></a></td>
+        {% endif %}
       </tr>
     </tbody>
   </table>    
 
   {% endblock body %}
 
-  
+
+  <td><a href="{% url 'login:profile_change' %}" style="text-decoration: none"><button class="btn btn-sm btn-light"" text-decoration: none><b>{{ object.cart.customer }}</b></button></a></td>
+  <td><a href="{% url 'login:customer_profile_change' object.cart.customer.profile.pk%}" style="text-decoration: none"><button class="btn btn-sm btn-light"" text-decoration: none><b>{{ object.cart.customer }}</b></button></a></td>  
 
 
 
