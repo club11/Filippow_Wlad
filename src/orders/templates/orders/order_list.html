@@ -8,7 +8,7 @@ order_list
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Заказ</th>
+        <th scope="col">Корзина</th>
         <th scope="col">Контактные данные</th>
         <th scope="col">Дата создания заказа</th>
         <th scope="col">Дата изменения заказа</th>
@@ -21,7 +21,7 @@ order_list
         {% for order in order_list %}
       <tr>
         <th scope="row">Заказ № {{ order.pk }}</th>
-        <td><a href='{% url "carts:booksincart_list"  %}' style="text-decoration: none">{{ order.cart.pk }}</a></td>
+        <td><a href='{% url "orders:order_detail" order.pk  %}' style="text-decoration: none">{{ order.cart.pk }}</a></td>
         <td><a href='#' style="text-decoration: none">{{ order.contact_info }}</a></td>
         <td>{{ order.created }}</td>
         <td>{{ order.updated }}</td>
@@ -39,7 +39,7 @@ order_list
 
 
 
-
+<td><a href='{% url "carts:booksincart_list"  %}' style="text-decoration: none">{{ order.cart.pk }}</a></td>
 
 <td><a href='{% url "carts:booksincart_detail" order.cart.pk   %}' style="text-decoration: none">{{ order.cart.pk }}</a></td>
 <td><a href='{% url "carts:booksincart_list" order.cart.pk %}' style="text-decoration: none">{{ order.cart }}</a></td>

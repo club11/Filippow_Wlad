@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}
+order_list
+{% endblock title %}
+{% block body %}
+
+<li>заказ =  object.cart.pk =  {{ object.cart.pk }}</li>        
+
+
+
+<table class="table">
+    <caption  align = 'top'><b> заказ  №{{ object.cart.pk }}</b></caption>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Книга</th>
+        <th scope="col">Автор</th>
+        <th scope="col">Количество</th>
+        <th scope="col">Цена, шт.</th>
+        <th scope="col">Цена, всего:</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for book in order.cart.goods.all %}
+      <tr>
+        <td>#</td>
+        <td>{{ book.book.name }}</td>
+        <td>{{ book.book.author }}</td>
+        <td>{{ book.quantity }}</td>
+        <td>{{ book.unit_price }}</td>
+        <td>{{ book.total_price }}</td>
+        {% endfor %}
+      </tr>
+      <td colspan="5"><b>Всего:</b></td>
+      <td><b>{{ object.cart.total_price }}</b></td>
+    </tbody>
+  </table>
+
+
+<td><b>Статус заказа:</b>:<a href='{% url "orders:order_update" order.pk %}' style="text-decoration: none"><button class="btn btn-sm btn-info" text-decoration: none>{{ object.order_status}}</button></a></td><br>
+<b>Дата заказа:</b>: {{ object.cart.order_date }}<br>
+
+<table class="table">
+    <caption  align = 'top'><b>Заказчик</b></caption>
+    <thead>
+      <tr>
+        <th scope="col">Логин</th>
+        <th scope="col">Имя / Фамилия</th>
+        <th scope="col">Контакные данные</th>
+        <th scope="col">Телефон</th>
+        <th scope="col">Дата создания заказа</th>
+        <th scope="col">Дата изменения заказа</th>
+        <th scope="col">Карточка заказчика</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ object.cart.customer }}</td>
+        <td>{{ object.cart.customer.profile.first_name }} / {{ object.cart.customer.profile.last_name }}</td>
+        <td>{{ object.contact_info }}</td>
+        <td>{{ object.cart.customer.profile.tel }}</td>
+        <td>{{ object.created }}</td>
+        <td>{{ object.updated }}</td>
+        <td>#</td>
+      </tr>
+    </tbody>
+  </table>    
+
+  {% endblock body %}
+
+  
+
+  <td><a href='#' style="text-decoration: none">{{ order.contact_info }}</a></td>
+
+
+

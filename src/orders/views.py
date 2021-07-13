@@ -87,5 +87,32 @@ class OrderUpdateView(UpdateView):
     )
     success_url = reverse_lazy('orders:order_list')
 
- 
+class OderDetailView(DetailView):
+    model = models.Order
+
+    def get_context_data(self, **kwargs):
+        self.object = self.get_object()
+        context = super().get_context_data(**kwargs) 
+        obj_pk=self.object.pk
+        print(obj_pk)
+        print(self.object.cart.pk)  
+        cart = carts_models.BooksInCart.objects.values('book')
+        #cart = models.Order.objects.filter(pk=obj_pk).values()      
+        print(cart)   
+        return context
+
+
+
+
+####def get_context_data(self, **kwargs):
+    #####    self.object = self.get_object()
+    #####    obj_pk=self.object.pk
+    #####    print(self.object) 
+    #####    print(obj_pk) 
+#####
+#####
+    #####    context = super().get_context_data(**kwargs) 
+    #####    cart = models.Order.objects.get(pk=int(obj_pk))         # == self.object = self.get_object()
+    #####    print(cart)   
+    #####    print(cart.pk) 
 
