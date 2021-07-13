@@ -19,7 +19,7 @@ order_list
     <tbody>
         {% for book in order.cart.goods.all %}
       <tr>
-        <td>#</td>
+        <td>{{ forloop.counter}} </td>
         <td>{{ book.book.name }}</td>
         <td>{{ book.book.author }}</td>
         <td>{{ book.quantity }}</td>

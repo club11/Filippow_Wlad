@@ -8,7 +8,8 @@ class Order(models.Model):
     cart = models.ForeignKey(
         carts_models.Cart,
         on_delete=models.PROTECT,
-        verbose_name='Order'
+        verbose_name='Order',
+        related_name='orders',
     )
 
     order_status= models.ForeignKey(
