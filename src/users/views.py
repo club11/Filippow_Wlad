@@ -71,73 +71,74 @@ class Registerview(FormView):
 
 
 
+#class ProfileView(UpdateView):
+#    model = models.Profile
+#    form_class = forms.RegisterUpdateForm
+#
+#    template_name = 'users/profile_change.html'
+#    success_url = reverse_lazy('users:profile_change')
+#
+#    def get_object(self, queryset=None):
+#        user=models.Profile.objects.get(user=self.request.user)
+#        return user
+
+
+    ##def get_object(self, queryset=None):
+    ##    return self.request.user.username 
+
+    #def form_valid(self, form):
+    #    pk = self.request.user.pk
+    #    user = User.objects.get(pk=pk)
+    #    print(user)
+    #    user = form.cleaned_data.get('user')
+    #    first_name = form.cleaned_data.get('first_name')
+    #    last_name = form.cleaned_data.get('last_name')
+    #    tel = form.cleaned_data.get('tel')
+    #    email = form.cleaned_data.get('email')
+    #    another_info = form.cleaned_data.get('another_info')
+    #    country = form.cleaned_data.get('country')
+    #    city = form.cleaned_data.get('city')
+    #    home_adress = form.cleaned_data.get('home_adress')
+    #    home_index = form.cleaned_data.get('home_index')
+    #    profile = models.Profile.objects.filter(user=user).update(
+    #        user = user,
+    #        first_name = first_name,
+    #        last_name = last_name,
+    #        tel = email,
+    #        email= email, 
+    #        another_info = another_info,
+    #        country = country, 
+    #        city = city, 
+    #        home_adress = home_adress,
+    #        home_index= home_index,
+    #    )
+    #    return HttpResponseRedirect(self.get_success_url())
+#
+
+
+
+
+
 class ProfileView(UpdateView):
     model = models.Profile
-    form_class = forms.RegisterUpdateForm
+    #form_class = forms.RegisterForm
     template_name = 'users/profile_change.html'
-    success_url = reverse_lazy('users:profile_change')
-
+    fields = (                                      #для UpdateView, не забыть заменить при DetailView
+        'tel',
+        'first_name',
+        'last_name',
+        'email',
+        'group',
+        'another_info',
+        'country',
+        'city',
+        'home_adress',
+        'home_index',
+        )
+    success_url = reverse_lazy('login:profile_change')
     def get_object(self, queryset=None):
         user_profile=models.Profile.objects.get(user=self.request.user)
         return user_profile
-
-    #def get_object(self, queryset=None):
-    #    return self.request.user.username 
-
-    def form_valid(self, form):
-        pk = self.request.user.pk
-        user = User.objects.get(pk=pk)
-        print(user)
-        user = form.cleaned_data.get('user')
-        first_name = form.cleaned_data.get('first_name')
-        last_name = form.cleaned_data.get('last_name')
-        tel = form.cleaned_data.get('tel')
-        email = form.cleaned_data.get('email')
-        another_info = form.cleaned_data.get('another_info')
-        country = form.cleaned_data.get('country')
-        city = form.cleaned_data.get('city')
-        home_adress = form.cleaned_data.get('home_adress')
-        home_index = form.cleaned_data.get('home_index')
-        profile = models.Profile.objects.filter(user=user).update(
-            user = user,
-            first_name = first_name,
-            last_name = last_name,
-            tel = email,
-            email= email, 
-            another_info = another_info,
-            country = country, 
-            city = city, 
-            home_adress = home_adress,
-            home_index= home_index,
-        )
-        return HttpResponseRedirect(self.get_success_url())
-
-
-
-
-
-
-#class ProfileView(UpdateView):
-#    model = models.Profile
-#    form_class = forms.RegisterForm
-#    template_name = 'users/profile_change.html'
-#    fields = (                                      #для UpdateView, не забыть заменить при DetailView
-#        'tel',
-#        'first_name',
-#        'last_name',
-#        'email',
-#        'group',
-#        'another_info',
-#        'country',
-#        'city',
-#        'home_adress',
-#        'home_index',
-#        )
-#    success_url = reverse_lazy('login:profile_change')
-
-#    def get_object(self, queryset=None):
-#        user_profile=models.Profile.objects.get(user=self.request.user)
-#        return user_profile
 
     #def form_valid(self, form):
     #    form = forms.RegisterForm

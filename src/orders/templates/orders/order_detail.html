@@ -4,10 +4,6 @@ order_list
 {% endblock title %}
 {% block body %}
 
-<li>заказ =  object.cart.pk =  {{ object.cart.pk }}</li>        
-
-
-
 <table class="table">
     <caption  align = 'top'><b> заказ  №{{ object.cart.pk }}</b></caption>
     <thead>
@@ -36,7 +32,6 @@ order_list
     </tbody>
   </table>
 
-
 <td><b>Статус заказа:</b>:<a href='{% url "orders:order_update" order.pk %}' style="text-decoration: none"><button class="btn btn-sm btn-info" text-decoration: none>{{ object.order_status}}</button></a></td><br>
 <b>Дата заказа:</b>: {{ object.cart.order_date }}<br>
 
@@ -61,7 +56,7 @@ order_list
         <td>{{ object.cart.customer.profile.tel }}</td>
         <td>{{ object.created }}</td>
         <td>{{ object.updated }}</td>
-        <td>#</td>
+        <td><a href="{% url 'login:profile_change' %}" style="text-decoration: none"><button class="btn btn-sm btn-light"" text-decoration: none><b>{{ object.cart.customer }}</b></button></a></td>
       </tr>
     </tbody>
   </table>    
@@ -70,7 +65,6 @@ order_list
 
   
 
-  <td><a href='#' style="text-decoration: none">{{ order.contact_info }}</a></td>
 
 
 

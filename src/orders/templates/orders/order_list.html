@@ -21,11 +21,11 @@ order_list
         {% for order in order_list %}
       <tr>
         <th scope="row">Заказ № {{ order.pk }}</th>
-        <td><a href='{% url "orders:order_detail" order.pk  %}' style="text-decoration: none">{{ order.cart.pk }}</a></td>
-        <td><a href='#' style="text-decoration: none">{{ order.contact_info }}</a></td>
+        <td><a href='{% url "orders:order_detail" order.pk  %}' style="text-decoration: none"><b>{{ order.cart.pk }}</b></a></td>
+        <td>{{ order.contact_info }}</a></td>
         <td>{{ order.created }}</td>
         <td>{{ order.updated }}</td>
-        <td>{{ order.order_status }}</td>
+        <td><b>{{ order.order_status }}</b></td>
         <td><a href='{% url "orders:order_update" order.pk %}' style="text-decoration: none"><button class="btn btn-sm btn-warning" text-decoration: none>Редактировать</button></a></td>
         <td><a href='{% url "orders:order_delete" order.pk %}' style="text-decoration: none"><button class="btn btn-sm btn-warning" text-decoration: none>Удалить</button></a></td>
         {% endfor %}
