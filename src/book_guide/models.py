@@ -3,6 +3,9 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.urls import reverse, reverse_lazy
 
+from django.contrib.contenttypes.fields import GenericRelation
+from comments.models import Comment
+
 # Create your models here.
 
 class Genre(models.Model):
@@ -28,6 +31,8 @@ class Author(models.Model):
         verbose_name='Автор',
         max_length=50,
     )
+
+    comments = GenericRelation(Comment)
 
     def __str__(self) -> str:
         return self.name

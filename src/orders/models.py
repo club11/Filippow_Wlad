@@ -1,5 +1,9 @@
+#from project_shop.src import comments
 from django.db import models
 
+
+from django.contrib.contenttypes.fields import GenericRelation
+from comments.models import Comment
 from carts import models as carts_models
 from django.urls import reverse, reverse_lazy
 # Create your models here.
@@ -34,6 +38,7 @@ class Order(models.Model):
         auto_now_add=False
     )
 
+    comments = GenericRelation(Comment)
 
 class OrderStatus(models.Model):
     name = models.CharField(

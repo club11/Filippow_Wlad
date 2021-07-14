@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load template_tags %}
 {% block title %}
 author_detail
 {% endblock title %}
@@ -11,6 +12,8 @@ author_detail
         <button class="btn btn-sm btn-warning" text-decoration: none;>Вернуться назад</button>
       </a> 
 <body>       
+
+  {% show_comments %}
 {% endblock body %}
 
 

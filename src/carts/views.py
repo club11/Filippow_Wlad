@@ -94,17 +94,5 @@ class CartUpdate(View):
             return HttpResponseRedirect(reverse_lazy('carts:cart_edit'))
 
 
-#class CartorderView(ListView):
-#    model = models.BooksInCart
-#    template_name = 'carts/booksincart_list.html'
-#
-#
-#    def get_context_data(self, **kwargs): 
-#        context = super().get_context_data(**kwargs) 
-#        print(context)
-#        #in_prerev = models.Book.objects.reverse()           #in pre- reverse
-#        #bestsellers = in_prerev.order_by('quantity_on_hand')[:4]
-#
-#        #context['bestsellers'] = bestsellers
-#        return context
+
 

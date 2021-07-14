@@ -1,3 +1,4 @@
+from django import template
 from django.contrib.auth import authenticate, get_user_model, login, models, password_validation
 from django.db.models.fields import related
 from django.forms import forms
@@ -9,7 +10,7 @@ from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordCha
 from django.contrib.auth.models import User
 #from .models import UserProfile
 #from .forms import UserProfileForm
-from django.views.generic import  FormView, DetailView, UpdateView
+from django.views.generic import  FormView, DetailView, UpdateView, View
 from django.http import HttpResponse, HttpResponseRedirect
 
 from . import models, forms
@@ -19,19 +20,11 @@ from carts import models as carts_models
 
 User = get_user_model()
 
-
-#class MyLoginPasswordChangeView(PasswordChangeView):
-#   template_name = 'users/psd_change.html'
-#   form_class = forms.PasswordChangeForm
-#   success_url = reverse_lazy('login:login')
-
-
 class Registerview(FormView):
     template_name = 'registration/register.html'
     form_class = forms.RegisterForm
     success_url = reverse_lazy('books_list:book_list')
     
-
     def form_valid(self, form):             # 1 раскидываем данные по моделям
         #1 зарегать сперва в стандартной джанговской модели
         username = form.cleaned_data.get('username')
@@ -55,11 +48,6 @@ class Registerview(FormView):
         login(self.request, user)
         return super().form_valid(form)
 
-
-
-
-
-
 class ProfileView(UpdateView):
     model = models.Profile
     #form_class = forms.RegisterForm
@@ -81,8 +69,6 @@ class ProfileView(UpdateView):
     def get_object(self, queryset=None):
         user_profile=models.Profile.objects.get(user=self.request.user)
         return user_profile
-
-
 
 class CustomerProfileView(UpdateView):
     model = models.Profile
@@ -125,3 +111,6 @@ class CustomerProfileView(UpdateView):
         #    user_profile = models.Profile.objects.get(pk=int(object_id))
         #    return user_profile
 
+class AdminPortalView(FormView):
+    form_class = forms.AdminPortalForm
+    template_name = 'users/admin_portal.html'

@@ -32,6 +32,7 @@ urlpatterns = [
     path('log/', include('users.urls', namespace ='login')),
     path('cart/', include('carts.urls', namespace ='carts')),
     path('orders/', include('orders.urls', namespace ='orders')),
+    path('comments/', include('comments.urls', namespace ='comments')),
     
 ] 
 

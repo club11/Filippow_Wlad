@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+admin_portal
+{% endblock title %}
+{% block body %}
+
+<ul class="list-group">
+    <li class="list-group-item active" aria-current="true"><b>Административный портал</b></li>
+    <li class="list-group-item"><a class="nav-link" href="{% url 'books_list:book_list' %}">Перечень книг</a></li>
+    <li class="list-group-item"><a class="nav-link" href="{% url 'orders:order_list' %}">Перечень заказов</a></li>
+    <li class="list-group-item"><a class="nav-link" href="{% url 'book_guide:book_references' %}">Справочники</a</li>
+</ul>
+
+{% endblock body %}

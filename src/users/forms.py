@@ -85,13 +85,9 @@ class RegisterForm(forms.Form):
 
 
 
-#class RegisterUpdateForm(forms.ModelForm):
-#
-#    class Meta:
-#        model = Profile
-#        fields = ['user','tel', 'email', 'first_name', 'last_name', 'country', 'city', 'home_index', 'home_adress', 'another_info']
-#
-#        def __init__(self, *args, **kwargs):
-#            super(RegisterUpdateForm, self).__init__(*args, **kwargs)
-#            self.fields['user'].queryset = Profile.objects.exclude(id__in=Profile.objects.all().values_list('user_id'))
-#            print(self.fields['user'].queryset)
+class AdminPortalForm(forms.Form):
+    link_one = forms.CharField(max_length='25')
+    link_second = forms.CharField(max_length='25')
+    link_third = forms.CharField(max_length='25')
+    link_fourth = forms.CharField(max_length='25')
+    link_fifth = forms.CharField(max_length='25')
